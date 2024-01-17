@@ -7,7 +7,7 @@ Console.WriteLine("Hello Prep2 World!");
 
 
 
-Console.Write("Enter your percentage score on any subject to see your grade: ");
+Console.Write("What is your grade percentage?: ");
 string percentScore = Console.ReadLine();
 int score = int.Parse(percentScore);
 string sign;
