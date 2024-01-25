@@ -6,7 +6,7 @@ public class Journal
     public string _entry;
     public List<Entry>_entries = new List<Entry>();// initializing the new entry lists.
 
-    public List<Entry> Entries {get {return _entries}} //get and return entries.
+    //get and return entries.
 
 
     public void AddEntry(Entry  entry)
