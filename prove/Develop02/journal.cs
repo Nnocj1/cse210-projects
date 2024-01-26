@@ -74,12 +74,13 @@ class Journal
                         string randomPrompt = entryFields[1];
                         string userResponds = entryFields[2];
 
-                        /*I wrote this section ONLY to express my understanding. I hope this will help me learn*/
-                        // 1. Because of the phrase 'new Entry', This section goes into the entry.cs or Entry class to supply it with the component value
-                        // of each of the entry in the file, namely _currentDate, _randomDate, and _userResponds. 
-                        // 2. The Entry class  fills those values into it's template ready to be displayed as complete entries.
-                        // 3. Beacuse this section is using the '_entries.Add' function, those entries are added to the _entries list, loaded to be displayed.
-                        // 4. When the user selects 'Display', the DisplayEntry method loops through the _entries to display each of the entry saved.
+                        /*I wrote this section ONLY to express my understanding. I hope this will help me learn
+                         1. Because of the phrase 'new Entry', This section below goes into the entry.cs or Entry class to supply it with the component value
+                         of each of the entry in the file, namely _currentDate, _randomDate, and _userResponds. 
+                         2. The Entry class  fills those values into it's template ready to be displayed as complete entries.
+                         3. Beacuse this section is using the '_entries.Add' function, those entries are added to the _entries list, loaded to be displayed.
+                         4. When the user selects 'Display', the DisplayEntry method loops through the _entries to display each of the entry saved.*/
+
                         _entries.Add(new Entry
                         {
                             _currentDate = currentDate,
