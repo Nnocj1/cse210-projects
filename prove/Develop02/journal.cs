@@ -109,7 +109,7 @@ class Journal
     // I have designed it to show all the files saved in the directory.
     public void DisplayAllFilenames()
     {
-        Console.WriteLine("All filenames in the current directory:");
+        Console.WriteLine("\nBelow are all the files in the current directory:\n");
         string[] files = Directory.GetFiles(Directory.GetCurrentDirectory());
         foreach (string file in files)
         {
