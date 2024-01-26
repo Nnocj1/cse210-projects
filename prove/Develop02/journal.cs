@@ -32,10 +32,10 @@ class Journal
 
         //Prompt user to name the file in which those entries will be saved
         Console.WriteLine("What name will you give to your file?: ");
-        string filename = Console.ReadLine();
+        string fileName = Console.ReadLine();
 
         //To Store entries in a file the user names
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(fileName))
 
         //To take each of the component or variables needed to construct the entry
         {
@@ -45,7 +45,7 @@ class Journal
             }
         }
         //closed the streamwriter to ensure that changes are saved.
-        Console.WriteLine($"Journal saved to {filename}\n");
+        Console.WriteLine($"Journal saved to {fileName}\n");
     }
 
     public void LoadFromFile()
@@ -56,16 +56,16 @@ class Journal
 
         //Prompt the user to type in the name of an existing file, to load it content. 
         //This will make the file available to display it's content
-        Console.Write("Enter the filename to load: ");
-        string filename = Console.ReadLine();
+        Console.Write("\nEnter the filename to load: ");
+        string fileName = Console.ReadLine();
 
 
         // if the name of the file matches and existing file, it load the file.
-        if (File.Exists(filename))
+        if (File.Exists(fileName))
         {
             _entries.Clear();
 
-            using (StreamReader reader = new StreamReader(filename))
+            using (StreamReader reader = new StreamReader(fileName))
             {
                 while (!reader.EndOfStream)
                 {
@@ -95,12 +95,12 @@ class Journal
                 }
             }
             //After loading the file, it prompt the user that the file has been loaded.
-            Console.WriteLine($"Journal loaded from {filename}\n");
+            Console.WriteLine($"Journal loaded from {fileName}\n");
         }
         else
         //Incase the file the user wants to load does not exist, it displays this prompt rather than throwing an error.
         {
-            Console.WriteLine($"File {filename} not found.\n");
+            Console.WriteLine($"File {fileName} not found.\n");
         }
     }
 
