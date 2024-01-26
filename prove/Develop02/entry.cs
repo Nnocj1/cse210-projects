@@ -2,6 +2,7 @@ using System;
 
 public class Entry
 {
+    //stating all the variables need for the entry class to function.
     public string _currentDate;
     public string _randomPrompt;
     public string _userResponds;
