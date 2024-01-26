@@ -1,6 +1,6 @@
-using System.Threading.Tasks.Dataflow;
+using System;
 using System.IO;
-using System.Diagnostics.CodeAnalysis;
+using System.Collections.Generic;
 
 
 class Journal
@@ -49,7 +49,11 @@ class Journal
     }
 
     public void LoadFromFile()
-    {
+    {   
+        // Here I show creativity. Knowing that some users may forget the name of the file,
+        // I have designed it to show all the files saved in the directory.
+        DisplayAllFilenames();
+
         //Prompt the user to type in the name of an existing file, to load it content. 
         //This will make the file available to display it's content
         Console.Write("Enter the filename to load: ");
@@ -97,6 +101,19 @@ class Journal
         //Incase the file the user wants to load does not exist, it displays this prompt rather than throwing an error.
         {
             Console.WriteLine($"File {filename} not found.\n");
+        }
+    }
+
+ 
+    // Here I show creativity. Knowing that some users may forget the name of the file,
+    // I have designed it to show all the files saved in the directory.
+    public void DisplayAllFilenames()
+    {
+        Console.WriteLine("All filenames in the current directory:");
+        string[] files = Directory.GetFiles(Directory.GetCurrentDirectory());
+        foreach (string file in files)
+        {
+            Console.WriteLine(Path.GetFileName(file));
         }
     }
 

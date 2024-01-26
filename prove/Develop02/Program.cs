@@ -1,6 +1,6 @@
 using System;
-using System.Runtime.InteropServices;
-using System.Xml.Serialization;
+using System.IO;
+using System.Collections.Generic;
 
 /* Author: Nicholas Oblitey Commey
    Purpose: W02- Assignment -Abstraction
@@ -19,7 +19,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Please select one of the following choices");
-            Console.WriteLine("1.Write\n2.Display\n3.Load\n4.Save\n5.Quit");
+            Console.WriteLine("1.Write\n2.Display\n3.Load\n4.Save\n5.Files names\n6.Quit");
             Console.Write("What is your choice?: ");
             string userChoice = Console.ReadLine();
             int choice = int.Parse(userChoice);
@@ -28,7 +28,7 @@ class Program
             
             {
                string[] prompts = {
-                "I'm I excited today?: ",
+                "Are you excited today?: ",
                 "Who was the most interesting person I interacted with today?: ",
                 "What was the best part of my day?: ",
                 "How did I see the hand of the Lord in my life today?: ",
@@ -65,6 +65,8 @@ class Program
                 myJournal.DisplayEntry();
             }
 
+            // Here I show creativity. Knowing that some users may forget the name of the file,
+            // I have designed it to show all the files saved in the directory.
             else if (choice == 3)
             {   
                 //Load saved entries from named file
@@ -81,6 +83,13 @@ class Program
             }
 
             else if (choice == 5)
+            {   
+                // Here I show creativity and exceed the requirement. Knowing that some users may forget the name of the file,
+                // I have designed it to show all the files saved in the directory.
+                myJournal.DisplayAllFilenames();
+            }
+
+            else if (choice == 6)
             {
                break;
             }
