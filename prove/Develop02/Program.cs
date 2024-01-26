@@ -59,19 +59,21 @@ class Program
 
             else if (choice == 2)
             {  
-                //Display the items in the journal.
+                //Display the entries in the journal.
                 myJournal.DisplayEntry();
             }
 
             else if (choice == 3)
-            {
+            {   
+                //Load saved entries from named file
                 myJournal.LoadFromFile();
                 
                  
             }
 
             else if (choice == 4)
-            {
+            { 
+                //Save entries into a file
                 myJournal.SaveFile();
 
             }
