@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
+using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 
 class Program
 {
@@ -9,17 +9,18 @@ class Program
        
         Console.WriteLine("Welcome to the Journal Program");
         
-        Journal journal = new Journal();
-
+        Journal myJournal = new Journal();
+        
         while (true)
         {
             Console.WriteLine("Please select one of the following choices");
-            Console.WriteLine("1. Write\n2.Display\n3.Load\n4.Save\n5.Quit");
+            Console.WriteLine("1.Write\n2.Display\n3.Load\n4.Save\n5.Quit");
             Console.Write("What is your choice?: ");
             string userChoice = Console.ReadLine();
             int choice = int.Parse(userChoice);
 
-            if (choice == 1)
+            if (choice == 1) 
+            
             {
               string[] prompts = {
                 "I'm I excited today?: ",
@@ -51,7 +52,7 @@ class Program
               
               //Adding the entries to the journal
         
-              journal.AddEntry(newEntry);
+              myJournal.AddEntry(newEntry);
 
               //attaching the properties of the 
             } 
@@ -59,21 +60,19 @@ class Program
             else if (choice == 2)
             {  
                 //Display the items in the journal.
-                journal.Display();
+                myJournal.DisplayEntry();
             }
 
             else if (choice == 3)
             {
-                Console.Write("Name the file");
-                string fileName =  Console.ReadLine();
+                myJournal.LoadFromFile();
+                
                  
             }
 
             else if (choice == 4)
             {
-                Console.WriteLine("What is the file name?: ");
-                string fileName = Console.ReadLine();
-                
+                myJournal.SaveFile();
 
             }
 
