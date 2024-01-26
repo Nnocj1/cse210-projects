@@ -2,6 +2,11 @@ using System;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
+/* Author: Nicholas Oblitey Commey
+   Purpose: W02- Assignment -Abstraction
+   Date Completed: 01/26/2024 */
+
+
 class Program
 {
     static void Main(string[] arg)
@@ -22,39 +27,36 @@ class Program
             if (choice == 1) 
             
             {
-              string[] prompts = {
+               string[] prompts = {
                 "I'm I excited today?: ",
                 "Who was the most interesting person I interacted with today?: ",
                 "What was the best part of my day?: ",
                 "How did I see the hand of the Lord in my life today?: ",
                 "What was the strongest emotion I felt today?: "
-              };
-              
-              //a random object for generating random prompts
-              Random random = new Random();
+                };
+                    
+                //a random object for generating random prompts
+                Random random = new Random();
 
-              int randomIndex = random.Next(prompts.Length);
-              string randomPrompt = prompts[randomIndex];
+                int randomIndex = random.Next(prompts.Length);
+                string randomPrompt = prompts[randomIndex];
 
-              //display a random prompt for the user to enter details
-              Console.Write(randomPrompt);
-              string userResponds = Console.ReadLine();
+                //display a random prompt for the user to enter details
+                Console.Write(randomPrompt);
+                string userResponds = Console.ReadLine();
 
-              //create an entry, get time, and append the responds to the entry
-              Entry newEntry = new Entry(); 
-              DateTime currentDate =  DateTime.Now;
-              string dateText = currentDate.ToShortDateString();
+                //create an entry, get time, and append the responds to the entry
+                Entry newEntry = new Entry(); 
+                DateTime currentDate =  DateTime.Now;
+                string dateText = currentDate.ToShortDateString();
 
-              //attaching the properties of the entry's object
-              newEntry._currentDate = dateText;
-              newEntry._randomPrompt = randomPrompt;
-              newEntry._userResponds = userResponds;
-              
+                //attaching the properties of the entry's object
+                newEntry._currentDate = dateText;
+                newEntry._randomPrompt = randomPrompt;
+                newEntry._userResponds = userResponds;
+                    
               //Adding the entries to the journal
-        
               myJournal.AddEntry(newEntry);
-
-              //attaching the properties of the 
             } 
 
             else if (choice == 2)
