@@ -2,9 +2,12 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-/* Author: Nicholas Oblitey Commey
+/* Author:  Nicholas Oblitey Commey
    Purpose: W02- Assignment -Abstraction
-   Date Completed: 01/26/2024 */
+   Exceeding & Showing creativity: Knowing that some users may forget the name of the file,
+   I have designed it to show all the files saved in the directory.
+   
+   Date Completed: 01/26/2024  */ 
 
 
 class Program
