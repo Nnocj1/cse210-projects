@@ -31,7 +31,7 @@ class Scripture
        }
     }
     
-    public string DisplayScripture()
+    public string Display()
     {
         string displayAllText = _reference;
 
@@ -39,6 +39,7 @@ class Scripture
         {
            displayAllText += word.GetDisplayWord() + " "; // Here it will check each word to decide to reveal or hide based on the random.
            // then display a new version of the scripture with some underscores instead of words.
+          
         }
         return displayAllText;
     }
