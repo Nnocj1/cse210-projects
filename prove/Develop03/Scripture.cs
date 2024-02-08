@@ -8,7 +8,6 @@ class Scripture
     private string _reference;
     List<Word>_words = new List<Word>();
 
-
     public Scripture(string reference, string text )//This is the scripture function, external codes will interact with.
     {
        _reference = reference;
@@ -55,5 +54,7 @@ class Scripture
         }
         return true;//else returns true.
     }
+
+   
 
 }

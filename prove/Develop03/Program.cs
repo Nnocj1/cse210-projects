@@ -1,15 +1,34 @@
 using System;
 
-class Program
+class NewProgramrogram
 {
-    static void Main(string[] arg)
+    static void cain(string[] arg)
     {
-        //creating a new instance of the reference class without an end verse or endVerse=0
-        Reference reference = new Reference("John", 3, 16);
-        string text ="For God so love the world. That he gave his only begotten son. That who so ever believes in Him shall not perish but have everlasting life.";
+
+        Console.Write("What is the name of the scripture?");
+        string scriptureName = Console.ReadLine();
+
+        Console.Write("What is the scripture's chapter?");
+        string userChapter = Console.ReadLine();
+        int scriptureChapter = int.Parse(userChapter);
+
+        Console.Write("What is the scripture's start verse?");
+        string userVerse = Console.ReadLine();
+        int scriptureVerse = int.Parse(userVerse);
+
+        Console.Write("What is the scripture end verse?");
+        string userEndVerse = Console.ReadLine();
+        int scriptureEndVerse = int.Parse(userEndVerse);
+       
+
+        Console.Write("Enter the scripture text");
+        string userText = Console.ReadLine();
+
+        Reference reference = new Reference(scriptureName, scriptureChapter, scriptureVerse, scriptureEndVerse);
+        
         
         //creating a new instance of the scripture class, which will display the full refernce and text of the scripture.
-        Scripture scripture =  new Scripture(reference.DisplayReference(), text);
+        Scripture scripture =  new Scripture(reference.DisplayReference(), userText);
    
 
         //while the scripture is not completely hidden, and the user press enter instead of quiting, it should hide random words.

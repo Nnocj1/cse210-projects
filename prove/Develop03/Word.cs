@@ -33,4 +33,5 @@ class Word
    {// if it's hidden, it should display _ _ _, else, it should display the text.
        return _isHidden ? "_ _ _ _ _" : _text;
    }
+
 }
