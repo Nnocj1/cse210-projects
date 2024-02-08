@@ -19,7 +19,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Please select one of the following choices");
-            Console.WriteLine("1.Enter new Scripture \n2.Display scriptures\n3.Load scriptures\n4.Save scripture\n5.Files\n6.Memorize scripture\nQuit");
+            Console.WriteLine("1.Enter new Scripture \n2.Display scriptures\n3.Load scriptures\n4.Save scripture\n5.Files\n6.Memorize scripture\n7.Quit");
             Console.Write("What is your choice?: ");
             string userChoice = Console.ReadLine();
             int choice = int.Parse(userChoice);
