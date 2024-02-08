@@ -19,7 +19,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Please select one of the following choices");
-            Console.WriteLine("1.Enter new Scripture \n2.Display scriptures\n3.Load scriptures\n4.Save scripture\n5.Files\n6.Memorize scripture\n7.Quit");
+            Console.WriteLine("1.Enter new Scripture \n2.Load scriptures\n3.Save scripture\n4.Files\n5.Memorize scripture\n6.Quit");
             Console.Write("What is your choice?: ");
             string userChoice = Console.ReadLine();
             int choice = int.Parse(userChoice);
@@ -55,34 +55,29 @@ class Program
                 scriptureBank.AddScripture(newScripture);
 
             }
- 
-            else if (choice == 2)
-            {
-                scriptureBank.DisplayScripture();
-            }
         
 
-            else if (choice == 3)
+            else if (choice == 2)
             {
                 scriptureBank.LoadFromFile();
             }
 
-            else if (choice == 4)
+            else if (choice == 3)
             {
                 scriptureBank.SaveFile();
             }
 
-            else if (choice == 5)
+            else if (choice == 4)
             {
                 scriptureBank.DisplayAllFilenames();
             }
 
-            else if (choice == 6)
+            else if (choice == 5)
             {
                 scriptureBank.MemorizeScripture();
             }
 
-            else if (choice == 7)
+            else if (choice == 6)
             {
                 break;
             }
