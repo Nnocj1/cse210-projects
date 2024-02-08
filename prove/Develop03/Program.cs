@@ -1,6 +1,6 @@
 using System;
 
-class NewProgramrogram
+class Program
 {
     static void cain(string[] arg)
     {
