@@ -10,6 +10,6 @@ class Assignment
 
    public void GetSummary()
    {
-    
+
    }
 }
