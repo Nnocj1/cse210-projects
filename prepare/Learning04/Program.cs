@@ -1,3 +1,9 @@
 using System;
 
-Console.WriteLine("Hello Learning04 World!");
+class Program
+{
+    static void Main(String[] arg)
+    {
+
+    }
+}

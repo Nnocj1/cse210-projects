@@ -22,7 +22,7 @@ class Program
             Console.WriteLine("1.Enter new Scripture \n2.Load scriptures\n3.Save scripture\n4.Files\n5.Memorize scripture\n6.Quit");
             Console.Write("What is your choice?: ");
             string userChoice = Console.ReadLine();
-            int choice = int.Parse(userChoice);
+            nt choice = int.Parse(userChoice);
 
             if (choice == 1) 
             {
