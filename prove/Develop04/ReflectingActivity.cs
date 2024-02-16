@@ -40,7 +40,7 @@ public class ReflectingActivity: Activity
             while(DateTime.Now < endTime)
             {
                 Console.WriteLine("Consider the following prompt....");
-                Console.WriteLine($" ----{GetRandomPrompt()} ---- ");
+                DisplayPrompt();
                 Console.WriteLine("When you have something in mind, press enter to continue");
                 Console.ReadLine();
                 
@@ -80,7 +80,7 @@ public class ReflectingActivity: Activity
 
     public void DisplayPrompt()
     {   //display a random prompt
-        Console.WriteLine(GetRandomPrompt());
+        Console.WriteLine($" ----{GetRandomPrompt()} ---- ");
     }
 
     public void DisplayQuestion()
