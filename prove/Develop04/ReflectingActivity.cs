@@ -2,7 +2,7 @@ using System;
 
 public class ReflectingActivity: Activity
 {
-
+    //variables
     private List<string> _prompts = new List<string>{
         "Think of a time when you stood up for someone else.",
         "Think of a time when you did something really difficult.",
@@ -22,6 +22,7 @@ public class ReflectingActivity: Activity
         "How can you keep this experience in mind in the future?"
     };
 
+    //methods
     public ReflectingActivity(string name, string activityInfo): base(name, activityInfo)
     {
         
@@ -87,5 +88,4 @@ public class ReflectingActivity: Activity
         //display a random question for the user to enter details
         Console.Write(GetRandomQuestion());
     }
-
- }
+}
