@@ -2,18 +2,36 @@ using System;
 
 public class ReflectingActivity: Activity
 {
-    private List<string> _prompts = new List<string>();
-    private List<string> _questions = new List<string>();
-
-
-    public ReflectingActivity()
+    public ReflectingActivity(string name, string activityInfo): base(name, activityInfo)
     {
-
+        
     }
 
     public void Run()
     {
+        DisplayStartingMessage();
+        
+        // Record the starting time
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
+     
+        {
+            while(DateTime.Now < endTime)
+            {
+                Console.WriteLine("Consider the following prompt....");
+                Console.WriteLine($" ----{GetRandomPrompt()} ---- ");
+                Console.WriteLine("When you have something in mind, press enter to continue");
+                Console.ReadLine();
+                
+                Console.WriteLine("Now ponder on each of the following questions, as they are related to this experience");
+                Console.Write("You may begin in:"); ShowCountDown();
+                DisplayQuestion(); ShowSpinner();
 
+                Console.WriteLine("\n");
+            }
+
+            DisplayEndingMessage();
+        }
     }
 
     public string GetRandomPrompt()
@@ -31,11 +49,11 @@ public class ReflectingActivity: Activity
             int randomIndex = random.Next(prompts.Length);
             string randomPrompt = prompts[randomIndex];
 
-            //display a random prompt for the user to enter details
-            Console.Write(randomPrompt);
-        }
+            
+            return randomPrompt;
+    }
 
-    public string GetRandomQuestions()
+    public string GetRandomQuestion()
     {
         string[] prompts = {
             "Why was this experience meaningful to you?",
@@ -55,18 +73,19 @@ public class ReflectingActivity: Activity
             int randomIndex = random.Next(prompts.Length);
             string randomQuestion = prompts[randomIndex];
 
-            //display a random prompt for the user to enter details
-            Console.Write(randomQuestion);
+            return randomQuestion;
+            
     }
 
     public void DisplayPrompt()
-    {
-
+    {   //display a random prompt
+        Console.WriteLine(GetRandomPrompt());
     }
 
-    public void DisplayQuestions()
+    public void DisplayQuestion()
     {
-
+        //display a random question for the user to enter details
+        Console.Write(GetRandomQuestion());
     }
 
-}
+ }
