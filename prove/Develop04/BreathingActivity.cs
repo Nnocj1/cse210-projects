@@ -1,6 +1,5 @@
 using System;
 
-
 public class BreathingActivity: Activity
 {
     public BreathingActivity(string name, string description) : base(name, description)
@@ -14,9 +13,10 @@ public class BreathingActivity: Activity
         
         // Record the starting time
         DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
      
         {
-            while(DateTime.Now - startTime <  TimeSpan.FromSeconds(GetDuration()))
+            while(startTime < endTime)
             {
                 Console.Write("Breathe in...");
                 ShowCountDown();
