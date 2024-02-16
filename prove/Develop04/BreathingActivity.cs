@@ -25,6 +25,8 @@ public class BreathingActivity: Activity
                 Console.Write("Breathe out...");
                 ShowCountDown();
                 Thread.Sleep(1000); // Wait for 1 second
+
+                Console.WriteLine(" ");
             }
            
         }  
