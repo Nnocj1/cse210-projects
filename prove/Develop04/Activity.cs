@@ -69,10 +69,11 @@ public class Activity
 
     public void ShowCountDown(int seconds)
     {   
-    
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
         Stopwatch newStopwatch = Stopwatch.StartNew();
 
-        while (newStopwatch.Elapsed.TotalSeconds < seconds)
+        while (newStopwatch.Elapsed.TotalSeconds < seconds && (DateTime.Now < endTime))
         
         {
             for (int i= seconds; i > 0; i--)
@@ -82,6 +83,11 @@ public class Activity
                     Console.Write(i);
                     Thread.Sleep(1000);
                     Console.Write("\b \b");
+
+                    if (DateTime.Now >= endTime)
+                    {
+                        break;
+                    }
 
                 }
             }   
