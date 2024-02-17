@@ -22,7 +22,7 @@ public class ListingActivity: Activity
         DisplayStartingMessage();
 
         GetListFromUser();
-        Console.WriteLine($"You have added {_count} items to the list.")
+        Console.WriteLine($"You have added {_count} items to the list.");
         DisplayEndingMessage();
     }
 
