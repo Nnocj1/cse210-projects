@@ -3,6 +3,7 @@ using System;
 
 public class ListingActivity: Activity
 {
+
     private int _count;
     private List<string> _prompts = new List<string>{
         "Who are people that you appreciate?",
@@ -22,7 +23,6 @@ public class ListingActivity: Activity
         DisplayStartingMessage();
 
         GetListFromUser();
-        Console.WriteLine($"You have added {_count} items to the list.");
         DisplayEndingMessage();
     }
 
@@ -65,6 +65,8 @@ public class ListingActivity: Activity
                     string item = Console.ReadLine();
                     items.Add(item);
                     _count += 1;
+                    Console.WriteLine($"You have added {_count} items to the list.");
+
                 }
             }
             
