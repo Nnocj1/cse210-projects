@@ -35,39 +35,49 @@ public class Activity
         SetDuration(duration);
         
         Console.WriteLine("Get ready...");
-        ShowSpinner();
+        ShowSpinner(3);
         Thread.Sleep(1000);
     }
     
 
     public void DisplayEndingMessage()
     {   
-        ShowSpinner();
+        ShowSpinner(3);
         Console.WriteLine($"\nWell done! You have completed the {_name} in {_duration} seconds.\n");
     }
 
-    public void ShowSpinner()
+    public void ShowSpinner(int seconds)
     {
         string[] prompts ={"|","/","-","\\"};
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(seconds);
 
-        foreach (string p in prompts)
+        while (startTime < endTime)
         {
-            Console.Write(p);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-        }
-        Console.WriteLine("\n");
-    }
-
-    public void ShowCountDown()
-    {   
-
-        for (int i=5; i > 0; i--)
+            foreach (string p in prompts)
             {
-                Console.Write(i);
+                Console.Write(p);
                 Thread.Sleep(1000);
                 Console.Write("\b \b");
             }
-        Console.WriteLine("");
+            Console.WriteLine("\n");
+        }
+    }
+
+    public void ShowCountDown(int seconds)
+    {   
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(seconds);
+
+        while (startTime < endTime)
+        {
+            for (int i=5; i > 0; i--)
+                {
+                    Console.Write(i);
+                    Thread.Sleep(1000);
+                    Console.Write("\b \b");
+                }
+            Console.WriteLine("");
+        }
     }
 }

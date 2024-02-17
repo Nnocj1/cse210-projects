@@ -19,11 +19,11 @@ public class BreathingActivity: Activity
             while(DateTime.Now < endTime)
             {
                 Console.Write("Breathe in...");
-                ShowCountDown();
+                ShowCountDown(5);
                 
                 Thread.Sleep(1000); // Wait for 1 second
                 Console.Write("Breathe out...");
-                ShowCountDown();
+                ShowCountDown(5);
                 Thread.Sleep(1000); // Wait for 1 second
 
                 Console.WriteLine(" ");

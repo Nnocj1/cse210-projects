@@ -44,7 +44,7 @@ class Program
                 string name = "Listing Activity";
                 string description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
 
-                //This section is the runing of the Reflecting Activity
+                //This section is the runing of the Listing Activity
                ListingActivity newListingActivity = new ListingActivity(name, description);
                newListingActivity.Run(); 
             }
