@@ -10,7 +10,7 @@ public class BreathingActivity: Activity
     public void Run()
     {
         DisplayStartingMessage();// Place  it here so that duration will obtain it value directly from this
-        
+        Console.WriteLine(" ");
         // Record the starting time
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(GetDuration());
@@ -21,18 +21,16 @@ public class BreathingActivity: Activity
                 Console.Write("Breathe in...");
                 ShowCountDown(5);
                 
-                if (DateTime.Now >= endTime)
-                {
+                if (DateTime.Now >= endTime)              
                     break;
-                }
-                
+               
+
                 Console.Write("Breathe out...");
                 ShowCountDown(5);
 
                 if (DateTime.Now >= endTime)
-                {
                     break;
-                }
+                
                 
 
                 Console.WriteLine(" ");

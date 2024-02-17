@@ -29,7 +29,7 @@ public class Activity
     {
         Console.WriteLine($"Welcome to {_name}\n");
         Console.WriteLine(_description);
-        Console.WriteLine("How long in seconds will you like for your session?");
+        Console.WriteLine("How long in seconds will you like for your session? multiples of 5 or 10");
         string userDuration = Console.ReadLine();
         int duration = int.Parse(userDuration);
 
@@ -78,21 +78,25 @@ public class Activity
         {
             for (int i= seconds; i > 0; i--)
             {
-                if (newStopwatch.Elapsed.TotalSeconds < seconds)
-                {
-                    Console.Write(i);
-                    Thread.Sleep(1000);
-                    Console.Write("\b \b");
-
-                    if (DateTime.Now >= endTime)
+                if (DateTime.Now >= endTime)
                     {
                         break;
                     }
+                
+                 
+                else if (DateTime.Now < endTime)   {
+                        Console.Write(i);
+                        Thread.Sleep(1000);
+                        Console.Write("\b \b");
 
-                }
-            }   
-        }
-        Console.WriteLine("");
+                        if (DateTime.Now >= endTime)
+                        {
+                            break;
+                        }
+
+                    }
+            }    
+            Console.WriteLine(" ");
+        }   
     }
-
 }
