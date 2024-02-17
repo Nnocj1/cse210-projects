@@ -3,7 +3,7 @@ using System;
 
 public class ListingActivity: Activity
 {
-    //private int _count;
+    private int _count;
     private List<string> _prompts = new List<string>{
         "Who are people that you appreciate?",
         "What are personal strengths of yours?",
@@ -22,7 +22,7 @@ public class ListingActivity: Activity
         DisplayStartingMessage();
 
         GetListFromUser();
-
+        Console.WriteLine($"You have added {_count} items to the list.")
         DisplayEndingMessage();
     }
 
@@ -43,10 +43,10 @@ public class ListingActivity: Activity
    {
        List<string> items = new List<string>();
 
-       Console.WriteLine("List as many responses as you can from the following prompts");
+       Console.WriteLine("\nList as many responses as you can from the following prompts");
        GetRandomPrompt();
        Console.Write("You have: ");
-       ShowCountDown(4);
+       ShowCountDown(3);
 
        DateTime startTime = DateTime.Now;
        DateTime endTime = startTime.AddSeconds(GetDuration());
@@ -54,8 +54,20 @@ public class ListingActivity: Activity
 
         while (DateTime.Now < endTime)
         {
-           string item = Console.ReadLine();
-           items.Add(item);
+            {
+                if (DateTime.Now == endTime)
+                {
+                    break;
+                }
+
+                else
+                {
+                    string item = Console.ReadLine();
+                    items.Add(item);
+                    _count += 1;
+                }
+            }
+            
         }
         return items;
              

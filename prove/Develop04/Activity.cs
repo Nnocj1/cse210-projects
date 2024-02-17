@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 public class Activity
 {
@@ -48,36 +49,44 @@ public class Activity
 
     public void ShowSpinner(int seconds)
     {
-        string[] prompts ={"|","/","-","\\"};
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(seconds);
+        Stopwatch newStopwatch = Stopwatch.StartNew();
 
-        while (startTime < endTime)
+        while (newStopwatch.Elapsed.TotalSeconds < seconds )
         {
+            string[] prompts ={"|","/","-","\\"};
             foreach (string p in prompts)
             {
-                Console.Write(p);
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
+                if ( newStopwatch.Elapsed.TotalSeconds < seconds)//Without this check, it will over spin
+                {
+                    Console.Write(p);
+                    Thread.Sleep(1000);
+                    Console.Write("\b \b");
+                }
+                //Console.WriteLine("\n");
             }
-            Console.WriteLine("\n");
-        }
+        }  
     }
 
     public void ShowCountDown(int seconds)
     {   
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(seconds);
+    
+        Stopwatch newStopwatch = Stopwatch.StartNew();
 
-        while (startTime < endTime)
+        while (newStopwatch.Elapsed.TotalSeconds < seconds)
+        
         {
-            for (int i=5; i > 0; i--)
+            for (int i= seconds; i > 0; i--)
+            {
+                if (newStopwatch.Elapsed.TotalSeconds < seconds)
                 {
                     Console.Write(i);
                     Thread.Sleep(1000);
                     Console.Write("\b \b");
+
                 }
-            Console.WriteLine("");
+            }   
         }
+        Console.WriteLine("");
     }
+
 }

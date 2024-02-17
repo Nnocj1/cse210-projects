@@ -21,10 +21,19 @@ public class BreathingActivity: Activity
                 Console.Write("Breathe in...");
                 ShowCountDown(5);
                 
-                Thread.Sleep(1000); // Wait for 1 second
+                if (DateTime.Now >= endTime)
+                {
+                    break;
+                }
+                
                 Console.Write("Breathe out...");
                 ShowCountDown(5);
-                Thread.Sleep(1000); // Wait for 1 second
+
+                if (DateTime.Now >= endTime)
+                {
+                    break;
+                }
+                
 
                 Console.WriteLine(" ");
             }

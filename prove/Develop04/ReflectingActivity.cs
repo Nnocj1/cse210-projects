@@ -39,7 +39,7 @@ public class ReflectingActivity: Activity
         {
             while(DateTime.Now < endTime)
             {
-                Console.WriteLine("Consider the following prompt....");
+                Console.WriteLine("\nConsider the following prompt....");
                 DisplayPrompt();
                 Console.WriteLine("When you have something in mind, press enter to continue");
                 Console.ReadLine();
