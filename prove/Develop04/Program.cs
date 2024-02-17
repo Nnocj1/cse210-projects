@@ -41,9 +41,12 @@ class Program
 
             else if (choice == 3)
             {
-                //string name = "Listing Activity";
-                break;
-                //string description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+                string name = "Listing Activity";
+                string description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+
+                //This section is the runing of the Reflecting Activity
+               ListingActivity newListingActivity = new ListingActivity(name, description);
+               newListingActivity.Run(); 
             }
 
             else if (choice == 4)
