@@ -1,14 +1,28 @@
+using System;
+
 public class Activity
 {
     private string _name;
-    private int _activityLength;
+    private int _duration;
     private string _description;
 
     public Activity(string name , string activityInfo) // This is also for setting the activity length's value.
     {
         _description = activityInfo;
         _name = name;
+   
     }
+
+    public int GetDuration()
+    {
+        return _duration;
+    }
+
+    public void SetDuration(int duration)
+    {
+        _duration = duration;
+    }
+
 
     public void DisplayStartingMessage()
     {
@@ -17,24 +31,43 @@ public class Activity
         Console.WriteLine("How long in seconds will you like for your session?");
         string userDuration = Console.ReadLine();
         int duration = int.Parse(userDuration);
-        _activityLength = duration;
 
+        SetDuration(duration);
+        
         Console.WriteLine("Get ready...");
-        Thread.Sleep(3000);
+        ShowSpinner();
+        Thread.Sleep(1000);
     }
+    
 
     public void DisplayEndingMessage()
-    {
-        Console.WriteLine($"Well done! You have completed the {_name} in {_activityLength} seconds.")
+    {   
+        ShowSpinner();
+        Console.WriteLine($"\nWell done! You have completed the {_name} in {_duration} seconds.\n");
     }
 
-    public void ShowSpinner(int seconds)
+    public void ShowSpinner()
     {
+        string[] prompts ={"|","/","-","\\"};
 
+        foreach (string p in prompts)
+        {
+            Console.Write(p);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+        Console.WriteLine("\n");
     }
 
-    public void ShowCountDown(int seconds)
-    {
+    public void ShowCountDown()
+    {   
 
+        for (int i=5; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
+        Console.WriteLine("");
     }
 }
