@@ -1,3 +1,8 @@
+/*Author: Nicholas Oblitey Commey
+Purpose: To prove inheritance skills
+Date: 17/2/2024
+Lessons: There are two ways to write a string list.*/
+
 using System;
 
 class Program
@@ -5,7 +10,9 @@ class Program
 
     static void Main(string[] args)
     {
-       
+        int numberofActivitiesDone = 0;
+        string tyOrIes = " ";
+
         while (true)
         {
             Console.WriteLine("Menu Options:");
@@ -17,6 +24,21 @@ class Program
             string userChoice = Console.ReadLine();
             int choice = int.Parse(userChoice);
 
+            //Here is where I show creativity by ensuring that at the end of each program,
+            // the user see the number of activities completed. 
+            
+
+            
+            if (numberofActivitiesDone >= 2)
+            {
+                tyOrIes = "activities";
+            }
+
+            else if  (numberofActivitiesDone <= 1)
+            {
+                tyOrIes = "activity";
+            }
+
 
             if (choice == 1)
             {
@@ -25,6 +47,8 @@ class Program
 
                BreathingActivity newBreathingActivity = new BreathingActivity(name, description);
                newBreathingActivity.Run();
+
+               numberofActivitiesDone += 1;
 
             }
 
@@ -36,7 +60,8 @@ class Program
                //This section is the runing of the Reflecting Activity
                ReflectingActivity newReflectingActivity = new ReflectingActivity(name, description);
                newReflectingActivity.Run();
-          
+
+               numberofActivitiesDone += 1;
             }
 
             else if (choice == 3)
@@ -47,12 +72,16 @@ class Program
                 //This section is the runing of the Listing Activity
                ListingActivity newListingActivity = new ListingActivity(name, description);
                newListingActivity.Run(); 
+
+               numberofActivitiesDone += 1;
             }
 
             else if (choice == 4)
             {
                 break;
             }   
+            
+            Console.WriteLine($"You have completed {numberofActivitiesDone} {tyOrIes}!");
         }
     }
 }
