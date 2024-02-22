@@ -39,5 +39,8 @@ public abstract class Goal
 
     public abstract string GetStringRepresentation();
     
+    // Here is where i show creativity by adding motivational quotes specific to each type of goal.
+    public abstract void DisplayMotivationalQuote();
     
+
 }

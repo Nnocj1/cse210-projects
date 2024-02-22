@@ -72,6 +72,7 @@ public class GoalManager
         Console.WriteLine($"You have {_score} points.\n");
     }
 
+   
     public void ListGoalNames()
     {   
         int index = 1;
@@ -115,6 +116,7 @@ public class GoalManager
 
                 SimpleGoal newSimpleGoal = new SimpleGoal(goalName, goalDescription, goalPoints, isComplete);
                 _goals.Add(newSimpleGoal);
+                newSimpleGoal.DisplayMotivationalQuote();//Here i show creativity by allowing the app to display motivational quotes.
 
             }
 
@@ -132,6 +134,7 @@ public class GoalManager
 
                 EternalGoal newEternalGoal = new EternalGoal(goalName, goalDescription, goalPoints);
                 _goals.Add(newEternalGoal );
+                newEternalGoal.DisplayMotivationalQuote();
             }
 
             else if (goal == 3)
@@ -156,6 +159,8 @@ public class GoalManager
                 int amountCompleted = 0;
                 CheckListGoal newCheckListGoal = new CheckListGoal(goalName, goalDescription, goalPoints, goalTarget, goalBonus, amountCompleted);
                 _goals.Add(newCheckListGoal);
+
+                newCheckListGoal.DisplayMotivationalQuote();
             }
 
             else

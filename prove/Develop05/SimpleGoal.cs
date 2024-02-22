@@ -56,4 +56,20 @@ public  class SimpleGoal: Goal
       string goalType = "Simple Goal";
       return $"{goalType}: {_shortName},{_description},{_points},{_isComplete}";
     }
+
+    public override void DisplayMotivationalQuote()
+    {
+        List<string> motivations = new List<string>(){
+          "The expert in anything was once a beginner. - Helen Hayes",
+          "Success is not the key to happiness. Happiness is the key to success.\nIf you love what you are doing, you will be successful.  - Albert Schweitzer",
+          "You don't have to be great to start, but you have to start to be great. - Zig Ziglar",
+          "The journey of a thousand miles begins with one step. - Lao Tzu"
+        };
+
+        Random random= new Random();
+        int randomIndex = random.Next(motivations.Count);
+        string randomQuote = motivations[randomIndex];
+
+        Console.WriteLine($"\n{randomQuote}\n");
+    }
 }

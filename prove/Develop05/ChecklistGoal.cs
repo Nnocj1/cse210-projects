@@ -70,4 +70,20 @@ public class CheckListGoal: Goal
         string goalType = "Checklist Goal";
         return $"{goalType}: {_shortName},{_description},{_points},{_bonus},{_target},{_amountCompleted}";
     }
+
+    public override void DisplayMotivationalQuote()
+    {
+        List<string> motivations = new List<string>(){
+            "You're never a loser until you quit trying. - Mike Ditka",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+            "Success is the sum of small efforts, repeated day in and day out. - Robert Collier"
+        };
+
+        Random random= new Random();
+        int randomIndex = random.Next(motivations.Count);
+        string randomQuote = motivations[randomIndex];
+
+        Console.WriteLine($"\n{randomQuote}\n");
+    }
 }
