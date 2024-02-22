@@ -33,7 +33,7 @@ public class EternalGoal: Goal
 
         else
         {
-            complete = "E";
+            complete = " ";
         }
 
         return $"[{complete}] {goalType}: {_shortName},({_description})";
