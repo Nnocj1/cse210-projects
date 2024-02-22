@@ -12,7 +12,7 @@ public class Program
         while (true)
         {
             //Displaying Total points earned.
-            Console.WriteLine($"You have {score} points.");
+            newGoalManager.DisplayPlayerInfo();
             
             //Menu Options
             Console.WriteLine("Menu Options:");
@@ -45,6 +45,11 @@ public class Program
             }
 
             else if (choice == 5)
+            {
+                newGoalManager.RecordEvent();
+            }
+
+            else if (choice == 6)
             {
                 break;
             }

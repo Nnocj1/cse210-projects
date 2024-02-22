@@ -13,6 +13,11 @@ public class GoalManager
         _score = score;
     }
 
+    public int GetScore()
+    {
+        return _score;
+    }
+
     public void Start()
     {
 
@@ -20,7 +25,7 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
-
+        Console.WriteLine($"You have {_score} points.\n");
     }
 
     public void ListGoalNames()
@@ -28,7 +33,7 @@ public class GoalManager
         int index = 1;
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine($"{index}. {goal.GetName()}");
+            Console.WriteLine($"{index}. {goal.GetGoalName()}");
         }
     }
 
@@ -37,7 +42,7 @@ public class GoalManager
         int index = 1;
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine($"{index}. {goal.GetDetailsString()}");
+            Console.WriteLine($" {index}. {goal.GetDetailsString()}");
             index++;
         }
     }
@@ -58,12 +63,14 @@ public class GoalManager
 
                 Console.Write("Describe your goal?: ");
                 string goalDescription = Console.ReadLine();
-
+ 
                 Console.Write("How many points should you earn once you complete this goal?: ");
-                string goalPoints = Console.ReadLine();
+                string userPoints = Console.ReadLine();
+                int goalPoints = int.Parse(userPoints);
+                bool isComplete = false;
 
-                SimpleGoal simpleGoal1 = new SimpleGoal(goalName, goalDescription, goalPoints);
-                _goals.Add(simpleGoal1);
+                SimpleGoal newSimpleGoal = new SimpleGoal(goalName, goalDescription, goalPoints, isComplete);
+                _goals.Add(newSimpleGoal);
 
             }
 
@@ -76,9 +83,11 @@ public class GoalManager
                 string goalDescription = Console.ReadLine();
 
                 Console.Write("How many points should you earn once you complete this goal?: ");
-                string goalPoints = Console.ReadLine();
-                EternalGoal simpleGoal2 = new EternalGoal(goalName, goalDescription, goalPoints);
-                _goals.Add(simpleGoal2);
+                string userPoints = Console.ReadLine();
+                int goalPoints = int.Parse(userPoints);
+
+                EternalGoal newEternalGoal = new EternalGoal(goalName, goalDescription, goalPoints);
+                _goals.Add(newEternalGoal );
             }
 
             else if (goal == 3)
@@ -90,13 +99,19 @@ public class GoalManager
                 string goalDescription = Console.ReadLine();
 
                 Console.Write("How many points should you earn once you complete this goal?: ");
-                string goalPoints = Console.ReadLine();
+                string userPoints = Console.ReadLine();
+                int goalPoints = int.Parse(userPoints);
 
                 Console.Write("How many times must this goal be accomplished?: ");
-                string goalTarget = Console.ReadLine();
-                int userTarget = int.Parse(goalTarget);
-                CheckListGoal simpleGoal3 = new CheckListGoal(goalName, goalDescription, goalPoints, userTarget, userTarget);
-                _goals.Add(simpleGoal3);
+                string userTarget = Console.ReadLine();
+                int goalTarget = int.Parse(userTarget);
+
+                Console.Write("What will be the bonus once the task is accomplished?: ");
+                string userBonus = Console.ReadLine();
+                int goalBonus = int.Parse(userBonus);
+                int amountCompleted = 0;
+                CheckListGoal newCheckListGoal = new CheckListGoal(goalName, goalDescription, goalPoints, goalTarget, goalBonus, amountCompleted);
+                _goals.Add(newCheckListGoal);
             }
 
             else
@@ -107,40 +122,109 @@ public class GoalManager
 
     public void RecordEvent()
     {
+        Console.WriteLine("The goals are: ");
+        ListGoalDetails();
+        Console.WriteLine("Which goal did you accomplish?:");
+        string userAccomplishment = Console.ReadLine();
+        int accomplishedGoalIndex = int.Parse(userAccomplishment) -1;
+
+        if (accomplishedGoalIndex  >= 0 && accomplishedGoalIndex < _goals.Count)
+        {
+            _goals[accomplishedGoalIndex].RecordEvents(); // Call RecordEvents of the selected goal
+            _score += _goals[accomplishedGoalIndex].GetPoints();
+        }
+        else
+        {
+            Console.WriteLine("Invalid goal selection!");
+        }
+            
 
     }
 
     public void SaveGoals()
-    {
-        string fileName = "myFile.txt";
-
+    {   
+        Console.WriteLine("What is the name of the file to save your goals?:");
+        string fileName = Console.ReadLine();
+        
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {   
-            
+            outputFile.WriteLine($"score: {_score}");
+            //outputFile.WriteLine(_score);
             foreach(Goal goal in _goals)
             {
                 // You can add text to the file with the WriteLine method
                 outputFile.WriteLine($"{goal.GetStringRepresentation()}");
                 
             }
+            Console.WriteLine("New Goals saved!\n");
         }
     }
 
-    public void LoadGoals()// there are different ways to achieve this.  either say while not end of stream, or use a foreach llop.
+    public void LoadGoals()// there are different ways to achieve this.  either say while not end of stream, or use a foreach loop.
     {
-        string filename = "myFile.txt";
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        Console.WriteLine("What is the filename for your goals?:");
+        string fileName = Console.ReadLine();
 
-        foreach (string line in lines)
+        if (File.Exists(fileName))
         {
-            string[] parts = line.Split(":");
+            _goals.Clear();
+            string[] lines = System.IO.File.ReadAllLines(fileName);
 
-            string shortname = parts[0];
-            string description = parts[1];
-            string point = parts[2];
-            Goal goal = new Goal(shortname, description,point);
-            _goals.Add(goal);
+            foreach (string line in lines)
+            {
+                string[] space = line.Split(" ");
+                if (space.Length < 3)
+                {
+                    _score = int.Parse(space[1]);
+                }
+                
+                
+
+                else
+                {
+                    string[] parts = line.Split(":");
+                    //string goalType = parts[0];
+                    string remainingInfo= parts[1];
+                    string[] partsB = remainingInfo.Split(",");
+                    string shortname = partsB[0];
+                    string description= partsB[1];
+
+                    int points = int.Parse(partsB[2]);
+
+
+                    if (partsB.Length == 6)
+                    {
+                        int bonus = int.Parse(partsB[3]);
+                        
+                        int target = int.Parse(partsB[4]);
+
+                        int amountCompleted = int.Parse(partsB[5]);
+
+                        CheckListGoal checkListGoal = new CheckListGoal(shortname, description, points, target, bonus, amountCompleted);
+                    
+                        _goals.Add(checkListGoal);
+
+                    }   
+
+                    else if (partsB.Length == 3)
+                    {
+                        EternalGoal eternalGoal = new EternalGoal(shortname, description, points);
+                        _goals.Add(eternalGoal);
+                    }
+                    
+                    else if (partsB.Length == 4)
+                    {
+                        bool completed = bool.Parse(partsB[3]);
+
+                        SimpleGoal simpleGoal = new SimpleGoal(shortname, description, points, completed);
+                        _goals.Add(simpleGoal);
+                    }  
+                    
+                }
+                
+            }
+            Console.WriteLine("Goals has been loaded successfully!\n");
+            
         }
     }
-
 }
