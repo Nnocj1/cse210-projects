@@ -24,10 +24,8 @@ public abstract class Goal
         return _points;
     }
 
-    public virtual void RecordEvents()
-    {   
-      Console.WriteLine($"Congratulations you have earned {_points} points.");
-    }
+    public abstract void RecordEvents();
+    
    
     public virtual bool IsComplete()
     {
