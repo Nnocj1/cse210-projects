@@ -17,6 +17,6 @@ public class NonTeachingStaff : Person
     public override string GetPersonStringRepresentation() 
     {    
        
-        return $"";
+        return $"{GetPersonFullDetails()} : {_role}";
     }
 }

@@ -6,7 +6,7 @@ public class MathsSubject: Subject
 
     private string _subjectName = "Maths10";
   
-    public MathsSubject(int totalClassTestScore, int totalExamsScore, int expectedNumberOfClassTests, int marksForEachTest, int numberOfCompletedClassTests, string finalGrade): base(subjectName, subjectTeacher, totalClassTestScore, totalExamsScore, expectedNumberOfClassTests, marksForEachTest, numberOfCompletedClassTests, finalGrade)
+    public MathsSubject(int totalClassTestScore, int totalExamsScore, int expectedNumberOfClassTests, int marksForEachTest, int numberOfCompletedClassTests, string finalGrade): base( totalClassTestScore, totalExamsScore, expectedNumberOfClassTests, marksForEachTest, numberOfCompletedClassTests, finalGrade)
     {
     
     }

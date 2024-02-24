@@ -94,12 +94,11 @@ public  class Person
         return "";
     }
 
-    public  virtual string GetPersonStringRepresentation()
-    {    
-        
+    public virtual string GetPersonStringRepresentation()
+    {
         return "";
     }
-
+    
     public string GetPersonFullDetails()
     {
         return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";

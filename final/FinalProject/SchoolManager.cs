@@ -29,12 +29,12 @@ public class SchoolManager
 
             if (choice == 1)
             {
-                CreatePerson();
+                CreatePerson(); //Add student with  subject info, teacher, or non-teaching staff.
             }
 
             else if (choice == 2)
             {
-                ListPersonDetails();
+                ListPersonDetails();/// just to let's say view all information about a teacher
             }
 
             else if (choice == 3)
@@ -47,7 +47,21 @@ public class SchoolManager
                 LoadPeople();
             }
 
-           
+            // else if (choice == 5)
+            // {
+            //     RecordStudentExams();
+            // }
+
+            // else if (choice == 6)
+            // {
+            //     RecordStudentTest();
+            // }
+
+            // else if (choice == 7)
+            // {
+            //     DisplayStudentSubject();
+            // }
+
             else if (choice == 5)
             {
                 break;
@@ -109,20 +123,22 @@ public class SchoolManager
                     int numSubjects = int.Parse(Console.ReadLine());
 
                     // Create a new student object
-                    Student newStudent = new Student(id,personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    Student newStudent = new Student(id,personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Enter Later", "Enter Later", "Enter Later", "Enter Later", false);
                     
                     //Add a subject
-                    Console.WriteLine("1. Maths or 2. English?: ");
-                    int choice = int.Parse(Console.ReadLine());
-
-                    if (choice == 1)
+                    for (int i = 0; i < numSubjects; i++)
                     {
-                        newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
-                    }
+                        Console.Write($"1. Maths or 2. English?: {i + 1}: ");
+                        int choice = int.Parse(Console.ReadLine());
+                        if (choice == 1)
+                        {
+                            newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
+                        }
 
-                    else if (choice == 2)
-                    {
-                        newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
+                        else if (choice == 2)
+                        {
+                            newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
+                        }
                     }
 
                     // Add the student to the list of persons
@@ -153,7 +169,7 @@ public class SchoolManager
     }
             
 
-    public void SavePerson()
+    public void SavePeople()
     {   
         Console.WriteLine("What is the name of the file to save your goals?:");
         string fileName = Console.ReadLine();
@@ -167,7 +183,7 @@ public class SchoolManager
                 outputFile.WriteLine($"{person.GetPersonStringRepresentation()}");
                 
             }
-            Console.WriteLine("New Goals saved!\n");
+            Console.WriteLine("Saved!\n");
         }
     }
 
@@ -192,56 +208,11 @@ public class SchoolManager
 
             foreach (string line in lines)
             {
-                string[] space = line.Split(" ");
-                if (space.Length < 3)
-                {
-                    _score = int.Parse(space[1]);
-                }
+                
                 
                 
 
-                else
-                {
-                    string[] parts = line.Split(":");
-                    //string goalType = parts[0];
-                    string remainingInfo= parts[1];
-                    string[] partsB = remainingInfo.Split(",");
-                    string shortname = partsB[0];
-                    string description= partsB[1];
 
-                    int points = int.Parse(partsB[2]);
-
-
-                    if (partsB.Length == 6)
-                    {
-                        int bonus = int.Parse(partsB[3]);
-                        
-                        int target = int.Parse(partsB[4]);
-
-                        int amountCompleted = int.Parse(partsB[5]);
-
-                        CheckListGoal checkListGoal = new CheckListGoal(shortname, description, points, target, bonus, amountCompleted);
-                    
-                        _goals.Add(checkListGoal);
-
-                    }   
-
-                    else if (partsB.Length == 3)
-                    {
-                        EternalGoal eternalGoal = new EternalGoal(shortname, description, points);
-                        _goals.Add(eternalGoal);
-                    }
-                    
-                    else if (partsB.Length == 4)
-                    {
-                        bool completed = bool.Parse(partsB[3]);
-
-                        SimpleGoal simpleGoal = new SimpleGoal(shortname, description, points, completed);
-                        _goals.Add(simpleGoal);
-                    }  
-                    
-                }
-                
             }
             Console.WriteLine("Goals has been loaded successfully!\n");
             
