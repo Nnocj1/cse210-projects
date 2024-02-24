@@ -261,14 +261,12 @@ public class SchoolManager
                         if (determineSubjectType.Length == 2)
                             {
                                 MathsSubject mathsSubject = new MathsSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
-                                _subjects.Add(mathsSubject);
                                 student.GetSubjects().Add(mathsSubject);
                             }
 
                         else if (determineSubjectType.Length == 3)
                             {
                                 EnglishSubject englishSubject = new EnglishSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
-                                _subjects.Add(englishSubject);
                                 student.GetSubjects().Add(englishSubject);
                             }
 
