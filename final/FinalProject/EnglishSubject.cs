@@ -1,40 +1,25 @@
 using System;
 
-public class Subject
+public class EnglishSubject: Subject
 {
-    protected string _subjectName;
-    protected string _subjectTeacher;
-    protected int _totalClassTestScore;
-    protected int _totalExamsScore;  
-    protected int _expectedNumberOfClassTests;
-    protected int _marksForEachTest;
-    protected int _numberOfCompletedClassTests;
-    protected string _finalGrade;
+    
   
-    public Subject(string subjectName, string subjectTeacher, int totalClassTestScore, int totalExamsScore, int expectedNumberOfClassTests, int marksForEachTest, int numberOfCompletedClassTests, string finalGrade)
+    public EnglishSubject(string subjectName, string subjectTeacher, int totalClassTestScore, int totalExamsScore, int expectedNumberOfClassTests, int marksForEachTest, int numberOfCompletedClassTests, string finalGrade): base(subjectName, subjectTeacher, totalClassTestScore, totalExamsScore, expectedNumberOfClassTests, marksForEachTest, numberOfCompletedClassTests, finalGrade)
     {
-        _subjectName = subjectName;
-        _subjectTeacher = subjectTeacher;
-        _totalClassTestScore = totalClassTestScore;
-        _totalExamsScore = totalExamsScore;
-        _expectedNumberOfClassTests = expectedNumberOfClassTests;
-        _marksForEachTest = marksForEachTest;
-        _numberOfCompletedClassTests = numberOfCompletedClassTests;
-        _finalGrade = finalGrade;
     
     }
     
-    public virtual string GetSubjectName()
+    public override string GetSubjectName()
     {
        return $"{_subjectName}.";
     }
 
-    public virtual string GetSubjectTeacher()
+    public override string GetSubjectTeacher()
     {
        return $"{_subjectTeacher}.";
     }
 
-    public virtual void RecordClassTest()
+    public override void RecordClassTest()
     {
       
 
@@ -42,16 +27,16 @@ public class Subject
         _numberOfCompletedClassTests++;
     }
     
-    public virtual int GetTotalTestScoreForRecording()
+    public override int GetTotalTestScoreForRecording()
     {
         return _totalClassTestScore/2;
     }
     
-    public virtual int GetTotalExamsScoreForRecording()
+    public override int GetTotalExamsScoreForRecording()
     {
         return _totalExamsScore/2;
     }
-    public virtual void RecordExamScore()
+    public override void RecordExamScore()
     {
         Console.WriteLine("New Exams score?: ");
         string responds = Console.ReadLine();
@@ -59,7 +44,7 @@ public class Subject
 
         _totalExamsScore += examsScore;
     }
-    public virtual void UpdateFinalGrade()
+    public override void UpdateFinalGrade()
     {
         int totalPercent = _totalClassTestScore/(_expectedNumberOfClassTests * _marksForEachTest) * 100;
 
@@ -99,20 +84,19 @@ public class Subject
         }
 
     }
-    public virtual string GetFinalGrade()
+    public override string GetFinalGrade()
     {
         return $"{_finalGrade}";
     }
 
-    public virtual string GetSubjectDetailsString()
+    public override string GetSubjectDetailsString()
     {
         
         return $"";
     }
 
-    public  virtual string GetSubjectStringRepresentation() 
+    public override string GetSubjectStringRepresentation() 
     {    
-
         return $"";
     }
    

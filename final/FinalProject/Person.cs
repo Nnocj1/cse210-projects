@@ -1,6 +1,6 @@
 using System;
 
-public class Person
+public  class Person
 {
     private string _sirName;
     private string _firstName;
@@ -12,10 +12,12 @@ public class Person
     private string _houseLine;
     private string _houseAddress;
     private bool _married;
+    private string _id;
 
 
-    public Person(string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married)
+    public Person(string id, string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married)
     {
+        _id = id;
         _sirName = sirName;
         _firstName = firstName;
         _otherNames = otherNames;
@@ -37,6 +39,11 @@ public class Person
     public string GetContactDetails()
     {
         return  $"{_houseAddress}, {_mobileContact} / {_houseLine}." ;
+    }
+    
+    public string GetId()
+    {
+        return $"{_id}";
     }
 
     public string GetLiveStatus()
@@ -81,4 +88,18 @@ public class Person
         string myOtherNames = Console.ReadLine();
         _otherNames = myOtherNames;
     }
+
+    public  virtual string GetPersonDetailsString()
+    {
+        
+
+        return $"";
+    }
+
+    public  virtual string GetPersonStringRepresentation()
+    {    
+        
+        return $"";
+    }
+
 }

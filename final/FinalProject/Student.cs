@@ -2,13 +2,23 @@ using System;
 
 public class Student : Person
 {
-    private List<Subject> _subjects = new List<Subject>();
+    private List<Subject> _subjects;
+
     
-    
-    public Student(string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married) : base(sirName, firstName, otherNames, age, mobileContact, motherName, fatherName,  houseLine, houseAddress,  married)
+    public Student(string id,string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married) : base(id,sirName, firstName, otherNames, age, mobileContact, motherName, fatherName,  houseLine, houseAddress,  married)
     {
-        
+        _subjects = new List<Subject>();
     
+    }
+
+    public List<Subject> GetSubjects()
+    {
+        return _subjects;
+    }
+
+    public void SetSubjects(List<Subject> newSubjects)
+    {
+        _subjects = newSubjects;
     }
     
     public void AddASubjectToStudy()
@@ -39,6 +49,19 @@ public class Student : Person
 
         Console.WriteLine("----------------------------------------------------------------------");
 
+    }
+
+
+    public override string GetPersonDetailsString()
+    {
+        
+        return "df";
+    }
+
+    public override string GetPersonStringRepresentation() 
+    {    
+        
+        return "fg";
     }
 
 }    

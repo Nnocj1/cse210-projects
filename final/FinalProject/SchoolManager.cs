@@ -1,33 +1,25 @@
 using System;
 using System.IO;
 
-public class PersonManager
+public class SchoolManager
 {
     private List<Person> _persons = new List<Person>();
 
-    private int _score;
-
-    public PersonManager(List<Person> goals, int score)
+    public SchoolManager(List<Person> persons )
     {
-        _goals = goals;
-        _score = score;
+        _persons = persons;
     }
 
-    public int GetScore()
-    {
-        return _score;
-    }
 
     public void Start()
     {
         while (true)
         {
-            //Displaying Total points earned.
-            DisplayPlayerInfo();
+           
             
             //Menu Options
             Console.WriteLine("Menu Options:");
-            Console.WriteLine(" 1. Create New Goal\n 2. List Goals.\n 3. Save Goals.\n 4. Load Goals.\n 5. Record Event\n 6. Quit.");
+            Console.WriteLine(" 1. Create New Person\n 2. List People.\n 3. Save People.\n 4. Load People.\n 5. Quit.");
             Console.Write("Select a choice from the menu: ");
 
             string userInput = Console.ReadLine();
@@ -37,57 +29,48 @@ public class PersonManager
 
             if (choice == 1)
             {
-                CreateGoal();
+                CreatePerson();
             }
 
             else if (choice == 2)
             {
-                ListGoalDetails();
+                ListPersonDetails();
             }
 
             else if (choice == 3)
             {
-                SaveGoals();
+                SavePeople();
             }
 
             else if (choice == 4)
             {
-                LoadGoals();
+                LoadPeople();
             }
 
+           
             else if (choice == 5)
-            {
-                RecordEvent();
-            }
-
-            else if (choice == 6)
             {
                 break;
             }
         }
     }
 
-    public void DisplayPlayerInfo()
-    {
-        Console.WriteLine($"You have {_score} points.\n");
-    }
-
    
-    public void ListGoalNames()
+    public void ListPersonNames()
     {   
         int index = 1;
-        foreach (Goal goal in _goals)
+        foreach (Person person in _persons)
         {
-            Console.WriteLine($"{index}. {goal.GetGoalName()}");
+            Console.WriteLine($"{index}. {person.GetOfficialName()}");
         }
     }
 
-    public void ListGoalDetails()
+    public void ListPersonDetails()
     {
         int index = 1;
-        foreach (Goal goal in _goals)
+        foreach (Person person in _persons)
         {
-            Console.WriteLine($" {index}. {goal.GetDetailsString()}");
+            Console.WriteLine($" {index}. {person.GetDetailsString()}");
             index++;
         }
     }
@@ -112,25 +95,47 @@ public class PersonManager
                 Console.Write("Other name/s?: ");
                 string personOtherNames = Console.ReadLine();
 
+                Console.Write("ID: ");
+                string id = Console.ReadLine();
+
                 Console.Write("Age?: ");
                 string age= Console.ReadLine();
                 int personAge = int.Parse(age);
                 
                 if (person == 1)
                 {
-                    Student newStudent = new Student(personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    // Prompt for additional information related to student
+                    Console.WriteLine("Enter the number of subjects the student is studying:");
+                    int numSubjects = int.Parse(Console.ReadLine());
+
+                    // Create a new student object
+                    Student newStudent = new Student(id,personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+
+                    // Add subjects for the student
+                    for (int i = 0; i < numSubjects; i++)
+                    {
+                        Console.Write($"Enter the name of subject {i + 1}: ");
+                        string subjectName = Console.ReadLine();
+                        newStudent.GetSubjects().Add(new Subject(subjectName, "Unknown", 0, 0, 4, 25, 0, "IP"));
+                    }
+
+                    // Add the student to the list of persons
                     _persons.Add(newStudent);
                 }
 
                 else if (person == 2)
                 {
-                    Teacher newTeacher = new Teacher(personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    Console.Write("What subject do you teach?: ");
+                    string teachingSubject = Console.ReadLine();
+                    Teacher newTeacher = new Teacher(id,personLastName, personFirstName, personOtherNames, personAge, teachingSubject, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
                     _persons.Add(newTeacher);
                 }
 
                 else if (person == 3)
                 {
-                    NonTeachingStaff newNonTeachingStaff = new NonTeachingStaff(personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    Console.Write("What is your role?: ");
+                    string role = Console.ReadLine();
+                    NonTeachingStaff newNonTeachingStaff = new NonTeachingStaff(id,personLastName, personFirstName, personOtherNames, personAge, role,"Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
                     _persons.Add(newNonTeachingStaff);
                 }
             }
@@ -140,55 +145,43 @@ public class PersonManager
             Console.WriteLine("You entered an Invalid number.");
             }
     }
-
-    public void RecordAttendance()
-    {
-        Console.WriteLine("The school members are: ");
-        ListGoalDetails();
-        Console.WriteLine("Which goal did you accomplish?:");
-        string userAccomplishment = Console.ReadLine();
-        int accomplishedGoalIndex = int.Parse(userAccomplishment) -1;
-
-        if (accomplishedGoalIndex  >= 0 && accomplishedGoalIndex < _goals.Count)
-        {
-            _goals[accomplishedGoalIndex].RecordEvents(); // Call RecordEvents of the selected goal
-            _score += _goals[accomplishedGoalIndex].GetPoints();
-        }
-        else
-        {
-            Console.WriteLine("Invalid goal selection!");
-        }
             
 
-    }
-
-    public void SaveGoals()
+    public void SavePerson()
     {   
         Console.WriteLine("What is the name of the file to save your goals?:");
         string fileName = Console.ReadLine();
         
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {   
-            outputFile.WriteLine($"score: {_score}");
-            //outputFile.WriteLine(_score);
-            foreach(Goal goal in _goals)
+          
+            foreach(Person person in _persons)
             {
                 // You can add text to the file with the WriteLine method
-                outputFile.WriteLine($"{goal.GetStringRepresentation()}");
+                outputFile.WriteLine($"{person.GetPersonStringRepresentation()}");
                 
             }
             Console.WriteLine("New Goals saved!\n");
         }
     }
 
-    public void LoadGoals()// there are different ways to achieve this.  either say while not end of stream, or use a foreach loop.
+    public List<Subject> GetStudentSubjects(Student student)
+    {
+        if (student != null)
+        {
+            return student.GetSubjects();
+        }
+        return null;
+    }
+
+    public void LoadPeople()// there are different ways to achieve this.  either say while not end of stream, or use a foreach loop.
     {
         Console.WriteLine("What is the filename for your goals?:");
         string fileName = Console.ReadLine();
 
         if (File.Exists(fileName))
         {
-            _goals.Clear();
+            _persons.Clear();
             string[] lines = System.IO.File.ReadAllLines(fileName);
 
             foreach (string line in lines)
