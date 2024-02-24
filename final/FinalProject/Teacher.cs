@@ -9,6 +9,10 @@ public class Teacher : Person
        _teachingSubject = teachingSubject;
     }
     
+    public override string GetPersonDetailsString()
+    {
+        return $"{GetOfficialName()} : ID - {GetId()} : Teaching Subject - {_teachingSubject}";
+    }
 
     public override string GetPersonStringRepresentation() 
     {    

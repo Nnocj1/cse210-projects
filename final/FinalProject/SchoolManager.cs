@@ -70,7 +70,7 @@ public class SchoolManager
         int index = 1;
         foreach (Person person in _persons)
         {
-            Console.WriteLine($" {index}. {person.GetDetailsString()}");
+            Console.WriteLine($" {index}. {person.GetPersonDetailsString()}");
             index++;
         }
     }

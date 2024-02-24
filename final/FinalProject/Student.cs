@@ -21,17 +21,6 @@ public class Student : Person
         _subjects = newSubjects;
     }
     
-    public void AddASubjectToStudy()
-    {
-       Console.WriteLine("Note that we offer only the following Subjects:");
-       Console.WriteLine(" 1. Maths10.\n 2. English.\n 3. Science.\nPreferable, enter the name of only of the above: ");
-       string subjectName = Console.ReadLine();
-       Subject newSubject = new Subject(subjectName, "UnKnown", 0, 0, 4, 25, 0, "unknown");// I'm setting this as default. Later that can be updated.
-
-       _subjects.Add(newSubject);
-
-    }
-
     public void DisplayStudentReportCard()
     {
         Console.WriteLine("                         LDS COMMUNITY SCHOOL ACADEMY                 \n");
@@ -51,11 +40,18 @@ public class Student : Person
 
     }
 
-
+    public override string GetPersonDetailsString()
+    {
+        return $"{GetOfficialName()} : ID - {GetId()}";
+    }
     public override string GetPersonStringRepresentation() 
     {    
-        
-        return "fg";
+        string allSubjects ="";
+        foreach (Subject subject in _subjects)
+        {
+            allSubjects = allSubjects + subject.GetSubjectStringRepresentation();
+        }
+        return $"{GetPersonDetailsString()} : Subject Info{allSubjects}";
     }
 
 }    

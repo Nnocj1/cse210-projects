@@ -9,6 +9,10 @@ public class NonTeachingStaff : Person
           _role =role;  
     }
     
+    public override string GetPersonDetailsString()
+    {
+        return $"{GetOfficialName()} : ID - {GetId()} : Role - {_role}";
+    }
 
     public override string GetPersonStringRepresentation() 
     {    
