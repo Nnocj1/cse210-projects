@@ -21,7 +21,7 @@ public class Teacher : Person
     public override string GetPersonStringRepresentation() 
     {    
         
-        return $"{GetPersonFullDetails()} : {_teachingSubject}";
+        return $"{GetPersonFullDetails()} : {_teachingSubject}  % 1";
     }
 
 }

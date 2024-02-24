@@ -8,8 +8,11 @@ class Program
         
         {
             
-            List<Person> person = new List<Person>();
-            SchoolManager schoolManager = new SchoolManager(person);
+            List<Person> persons = new List<Person>();
+            List<Student> students = new List<Student>();
+            List<Teacher> teachers = new List<Teacher>();
+            List<NonTeachingStaff> nonTeachingStaff = new List<NonTeachingStaff>();
+            SchoolManager schoolManager = new SchoolManager(persons,students,teachers,nonTeachingStaff);
 
             schoolManager.Start();
             

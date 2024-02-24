@@ -18,10 +18,10 @@ public class NonTeachingStaff : Person
     {
         return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";
     }
-    
+
     public override string GetPersonStringRepresentation() 
     {    
        
-        return $"{GetPersonFullDetails()} : {_role}";
+        return $"{GetPersonFullDetails()} : {_role} % 1 % 2";
     }
 }

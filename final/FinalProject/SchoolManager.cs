@@ -5,9 +5,18 @@ public class SchoolManager
 {
     private List<Person> _persons = new List<Person>();
 
-    public SchoolManager(List<Person> persons )
+    private List<Student> _students = new List<Student>();
+
+    private List<Teacher> _teachers =  new List<Teacher>();
+
+    private List<NonTeachingStaff> _nonTeachingStaff = new List<NonTeachingStaff>();
+
+    public SchoolManager(List<Person> persons,List<Student>students,List<Teacher> teachers,List<NonTeachingStaff> nonTeachingStaff)
     {
         _persons = persons;
+        _students = students;
+        _teachers = teachers;
+        _nonTeachingStaff = nonTeachingStaff;
     }
 
 
@@ -208,8 +217,58 @@ public class SchoolManager
 
             foreach (string line in lines)
             {
+                string[] personalRoleInfo = line.Split(":");
+                string personFullDetails = personalRoleInfo[0];
+             
+                string[] personTypeInfo = line.Split("%");
+
+                //Detailed personal info.
+                string[] personalFullDetails = line.Split(",");
                 
-                
+
+                if (personTypeInfo.Length == 2)
+                {
+                    string id = personalFullDetails[0]; 
+                    string sirName = personalFullDetails[1];
+                    string firstName = personalFullDetails[2];
+                    string otherNames = personalFullDetails[3];
+                    int age = int.Parse(personalFullDetails[4]);
+                    string mobileContact = personalFullDetails[5];
+                    string motherName = personalFullDetails[6];
+                    string fatherName = personalFullDetails[7];
+                    string houseLine = personalFullDetails[8];
+                    string houseAddress = personalFullDetails[9];
+                    bool married = bool.Parse(personalFullDetails[10]);
+                    Student student = new Student(id,sirName,firstName,otherNames,age,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                }
+
+                else if (personTypeInfo.Length == 3 || personTypeInfo.Length == 4)
+                {
+                    string id = personalFullDetails[0]; 
+                    string sirName = personalFullDetails[1];
+                    string firstName = personalFullDetails[2];
+                    string otherNames = personalFullDetails[3];
+                    int age = int.Parse(personalFullDetails[4]);
+                    string workType = personalFullDetails[5];
+                    string mobileContact = personalFullDetails[6];
+                    string motherName = personalFullDetails[7];
+                    string fatherName = personalFullDetails[8];
+                    string houseLine = personalFullDetails[9];
+                    string houseAddress = personalFullDetails[10];
+                    bool married = bool.Parse(personalFullDetails[11]);
+
+
+                    if (personTypeInfo.Length == 3)
+                    {
+                        Teacher teacher = new Teacher(id,sirName,firstName,otherNames,age, workType,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                    }
+
+                    else if (personTypeInfo.Length == 4)
+                    {
+                        NonTeachingStaff nonTeachingStaff = new NonTeachingStaff(id,sirName,firstName,otherNames,age, workType,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                    }
+                }
+
                 
 
 
