@@ -207,7 +207,7 @@ public class SchoolManager
 
     public void LoadPeople()// there are different ways to achieve this.  either say while not end of stream, or use a foreach loop.
     {
-        Console.WriteLine("What is the filename for your goals?:");
+        Console.WriteLine("What is the filename of your people file?:");
         string fileName = Console.ReadLine();
 
         if (File.Exists(fileName))
@@ -223,17 +223,13 @@ public class SchoolManager
                 string[] personTypeInfo = line.Split("%");
 
                 //Detailed personal info.
-                string[] personalFullDetails = line.Split(",");
+                string[] personalFullDetails = personFullDetails.Split(",");
                 
                 //details of students for subjects.
                 string roleInfo = personalRoleInfo[1];
                 string[] studentSubjectInfo = roleInfo.Split("-");
-
-
-
-                
-
-                
+                int subjectNumber = studentSubjectInfo.Length;
+            
 
                 if (personTypeInfo.Length == 2)
                 {
@@ -249,36 +245,46 @@ public class SchoolManager
                     string houseAddress = personalFullDetails[9];
                     bool married = bool.Parse(personalFullDetails[10]);
 
-                    if (studentSubjectInfo.Length >= 1)
+                    Student student = new Student(id,sirName,firstName,otherNames,age,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                    _persons.Add(student);
+                    _students.Add(student);
+                     
+                    // this section is to add the subject information to each student.
+                    int index = 1;
+                    int shift = 1; 
+                    for (int i = 0; i < subjectNumber - 1;)
                     {
-                        foreach (string parts in  studentSubjectInfo)
-                        {
-                            string subjectInfo = studentSubjectInfo[0];
-                            string[] subjectParts = subjectInfo.Split(",");
-                            string subjectName = subjectParts[0];
-                            string subjectTeacher = subjectParts[1];
-                            int totalClassTestScore = int.Parse(subjectParts[2]);
-                            int totalExamsScore = int.Parse(subjectParts[3]);
-                            int expectedNumberOfClassTests = int.Parse(subjectParts[4]);
-                            int marksForEachTest = int.Parse(subjectParts[5]);
-                            int numberOfCompletedClassTests = int.Parse(subjectParts[6]);
-                            string finalGrade = subjectParts[7];
-                            
-                            //checking the type of subject.
-                            string[] determineSubjectType = subjectInfo.Split("|");
-                            if (determineSubjectType.Length == 2)
+                        string subjectInfo = studentSubjectInfo[0 + shift];
+                        string[] subjectParts = subjectInfo.Split(",");
+                        string subjectName = subjectParts[0];
+                        string subjectTeacher = subjectParts[1];
+                        int totalClassTestScore = int.Parse(subjectParts[2]);
+                        int totalExamsScore = int.Parse(subjectParts[3]);
+                        int expectedNumberOfClassTests = int.Parse(subjectParts[4]);                            int marksForEachTest = int.Parse(subjectParts[5]);
+                        int numberOfCompletedClassTests = int.Parse(subjectParts[6]);
+                        string finalGrade = subjectParts[7];
+                                
+                        //checking the type of subject.
+                        string[] determineSubjectType = subjectInfo.Split("|");
+                        if (determineSubjectType.Length == 2)
                             {
                                 MathsSubject mathsSubject = new MathsSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                                student.GetSubjects().Add(mathsSubject);
                             }
 
-                            else if (determineSubjectType.Length == 3)
+
+                        else if (determineSubjectType.Length == 3)
                             {
-                                MathsSubject mathsSubject = new MathsSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                                EnglishSubject mathsSubject = new EnglishSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                                student.GetSubjects().Add(mathsSubject);
                             }
-                        }
+
+                        i += index;    
+                        shift++;
                     }
-                        Student student = new Student(id,sirName,firstName,otherNames,age,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
-                    }
+                
+                    
+            }
 
                 else if (personTypeInfo.Length == 3 || personTypeInfo.Length == 4)
                 {
@@ -299,11 +305,15 @@ public class SchoolManager
                     if (personTypeInfo.Length == 3)
                     {
                         Teacher teacher = new Teacher(id,sirName,firstName,otherNames,age, workType,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                        _persons.Add(teacher);
+                        _teachers.Add(teacher);
                     }
 
                     else if (personTypeInfo.Length == 4)
                     {
                         NonTeachingStaff nonTeachingStaff = new NonTeachingStaff(id,sirName,firstName,otherNames,age, workType,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                        _persons.Add(nonTeachingStaff);
+                        _nonTeachingStaff.Add(nonTeachingStaff);
                     }
                 }
 

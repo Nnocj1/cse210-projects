@@ -16,7 +16,7 @@ public class NonTeachingStaff : Person
 
     public override string GetPersonFullDetails()
     {
-        return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";
+        return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_role},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";
     }
 
     public override string GetPersonStringRepresentation() 
