@@ -149,7 +149,7 @@ public class SchoolManager
                 {
                     Console.Write("What subject do you teach?: ");
                     string teachingSubject = Console.ReadLine();
-                    Teacher newTeacher = new Teacher(id,personLastName, personFirstName, personOtherNames, personAge, teachingSubject, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    Teacher newTeacher = new Teacher(id,personLastName, personFirstName, personOtherNames, personAge, teachingSubject, "Enter Later", "Enter Later", "Enter Later", "Enter Later", "Enter Later", false);
                     _persons.Add(newTeacher);
                 }
 
@@ -157,7 +157,7 @@ public class SchoolManager
                 {
                     Console.Write("What is your role?: ");
                     string role = Console.ReadLine();
-                    NonTeachingStaff newNonTeachingStaff = new NonTeachingStaff(id,personLastName, personFirstName, personOtherNames, personAge, role,"Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    NonTeachingStaff newNonTeachingStaff = new NonTeachingStaff(id,personLastName, personFirstName, personOtherNames, personAge, role,"Enter Later", "Enter Later", "Enter Later", "Enter Later", "Enter Later", false);
                     _persons.Add(newNonTeachingStaff);
                 }
             }
