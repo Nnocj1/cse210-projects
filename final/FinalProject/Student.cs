@@ -3,7 +3,6 @@ using System;
 public class Student : Person
 {
     private List<Subject> _subjects;
-
     
     public Student(string id,string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married) : base(id,sirName, firstName, otherNames, age, mobileContact, motherName, fatherName,  houseLine, houseAddress,  married)
     {

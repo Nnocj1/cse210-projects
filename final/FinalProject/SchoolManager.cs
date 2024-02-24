@@ -4,13 +4,9 @@ using System.IO;
 public class SchoolManager
 {
     private List<Person> _persons = new List<Person>();
-
     private List<Student> _students = new List<Student>();
-
     private List<Teacher> _teachers =  new List<Teacher>();
-
     private List<NonTeachingStaff> _nonTeachingStaff = new List<NonTeachingStaff>();
-
     public SchoolManager(List<Person> persons,List<Student>students,List<Teacher> teachers,List<NonTeachingStaff> nonTeachingStaff)
     {
         _persons = persons;
@@ -19,13 +15,10 @@ public class SchoolManager
         _nonTeachingStaff = nonTeachingStaff;
     }
 
-
     public void Start()
     {
         while (true)
-        {
-           
-            
+        {             
             //Menu Options
             Console.WriteLine("Menu Options:");
             Console.WriteLine(" 1. Create New Person\n 2. List People.\n 3. Save People.\n 4. Load People.\n 5. Quit.");
@@ -34,7 +27,6 @@ public class SchoolManager
             string userInput = Console.ReadLine();
             int choice = int.Parse(userInput);
             
-
 
             if (choice == 1)
             {
@@ -78,7 +70,6 @@ public class SchoolManager
         }
     }
 
-   
     public void ListPersonNames()
     {   
         int index = 1;
@@ -104,8 +95,7 @@ public class SchoolManager
         Console.WriteLine(" 1. Student.\n 2. Teacher.\n 3. Non - Teaching Staff.");
         Console.Write("What type of Person would you like to create?: ");
         string userPerson = Console.ReadLine();
-        int person = int.Parse(userPerson);
-            
+        int person = int.Parse(userPerson);        
 
             if (person <= 3)
             {   
@@ -176,8 +166,7 @@ public class SchoolManager
             Console.WriteLine("You entered an Invalid number.");
             }
     }
-            
-
+                
     public void SavePeople()
     {   
         Console.WriteLine("What is the name of the file to save your goals?:");
@@ -272,7 +261,6 @@ public class SchoolManager
                                 student.GetSubjects().Add(mathsSubject);
                             }
 
-
                         else if (determineSubjectType.Length == 3)
                             {
                                 EnglishSubject mathsSubject = new EnglishSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
@@ -281,9 +269,7 @@ public class SchoolManager
 
                         i += index;    
                         shift++;
-                    }
-                
-                    
+                    }                   
             }
 
                 else if (personTypeInfo.Length == 3 || personTypeInfo.Length == 4)
@@ -316,13 +302,8 @@ public class SchoolManager
                         _nonTeachingStaff.Add(nonTeachingStaff);
                     }
                 }
-
-                
-
-
             }
-            Console.WriteLine("Goals has been loaded successfully!\n");
-            
+            Console.WriteLine("Goals has been loaded successfully!\n");          
         }
     }
 }

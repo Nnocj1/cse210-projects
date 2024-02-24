@@ -87,7 +87,6 @@ public abstract class Subject
         {
             _finalGrade = "Invalid";
         }
-
     }
     public string GetFinalGrade()
     {
@@ -96,8 +95,6 @@ public abstract class Subject
 
     public abstract string GetSubjectDetailsString();
    
-
-    public  abstract string GetSubjectStringRepresentation();
-    
+    public  abstract string GetSubjectStringRepresentation();    
    
 }    

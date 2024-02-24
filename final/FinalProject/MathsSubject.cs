@@ -22,15 +22,12 @@ public class MathsSubject: Subject
     }
 
     public override string GetSubjectDetailsString()
-    {
-        
+    {        
         return $"Test Score: {_totalClassTestScore/2} + {_totalExamsScore/2} : {_finalGrade} -- {_subjectTeacher}";
     }
 
     public  override string GetSubjectStringRepresentation() 
     {    
-
         return $"-{_subjectName},{_subjectTeacher},{_totalClassTestScore},{_totalExamsScore},{_expectedNumberOfClassTests},{_marksForEachTest},{_numberOfCompletedClassTests},{_finalGrade}, | 1";
-    }
-   
+    }   
 }    

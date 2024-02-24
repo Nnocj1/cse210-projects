@@ -14,7 +14,6 @@ public  class Person
     protected bool _married;
     protected string _id;
 
-
     public Person(string id, string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married)
     {
         _id = id;
@@ -28,7 +27,6 @@ public  class Person
         _houseLine = houseLine;
         _houseAddress = houseAddress;
         _married = married;
-
     }
     
     public string GetOfficialName()
