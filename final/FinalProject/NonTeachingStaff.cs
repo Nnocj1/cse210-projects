@@ -10,12 +10,6 @@ public class NonTeachingStaff : Person
     }
     
 
-    public override string GetPersonDetailsString()
-        {
-
-            return $"";
-        }
-
     public override string GetPersonStringRepresentation() 
     {    
        

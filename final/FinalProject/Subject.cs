@@ -1,9 +1,7 @@
 using System;
 
-public class Subject
+public abstract class Subject
 {
-    protected string _subjectName;
-    protected string _subjectTeacher;
     protected int _totalClassTestScore;
     protected int _totalExamsScore;  
     protected int _expectedNumberOfClassTests;
@@ -11,10 +9,8 @@ public class Subject
     protected int _numberOfCompletedClassTests;
     protected string _finalGrade;
   
-    public Subject(string subjectName, string subjectTeacher, int totalClassTestScore, int totalExamsScore, int expectedNumberOfClassTests, int marksForEachTest, int numberOfCompletedClassTests, string finalGrade)
+    public Subject(int totalClassTestScore, int totalExamsScore, int expectedNumberOfClassTests, int marksForEachTest, int numberOfCompletedClassTests, string finalGrade)
     {
-        _subjectName = subjectName;
-        _subjectTeacher = subjectTeacher;
         _totalClassTestScore = totalClassTestScore;
         _totalExamsScore = totalExamsScore;
         _expectedNumberOfClassTests = expectedNumberOfClassTests;
@@ -24,34 +20,28 @@ public class Subject
     
     }
     
-    public virtual string GetSubjectName()
-    {
-       return $"{_subjectName}.";
-    }
+    public abstract string GetSubjectName();
 
-    public virtual string GetSubjectTeacher()
-    {
-       return $"{_subjectTeacher}.";
-    }
+    public abstract string GetSubjectTeacher();
 
-    public virtual void RecordClassTest()
+    public void RecordClassTest()
     {
       
-
         _totalClassTestScore += _marksForEachTest;
         _numberOfCompletedClassTests++;
     }
     
-    public virtual int GetTotalTestScoreForRecording()
+    public  int GetTotalTestScoreForRecording()
     {
         return _totalClassTestScore/2;
     }
     
-    public virtual int GetTotalExamsScoreForRecording()
+    public int GetTotalExamsScoreForRecording()
     {
         return _totalExamsScore/2;
     }
-    public virtual void RecordExamScore()
+
+    public void RecordExamScore()
     {
         Console.WriteLine("New Exams score?: ");
         string responds = Console.ReadLine();
@@ -59,9 +49,9 @@ public class Subject
 
         _totalExamsScore += examsScore;
     }
-    public virtual void UpdateFinalGrade()
+    public void UpdateFinalGrade()
     {
-        int totalPercent = _totalClassTestScore/(_expectedNumberOfClassTests * _marksForEachTest) * 100;
+        int totalPercent = (_totalClassTestScore/(_expectedNumberOfClassTests * _marksForEachTest) * 50) + _totalExamsScore/2;
 
         if ( totalPercent>= 93)
         {
@@ -99,21 +89,15 @@ public class Subject
         }
 
     }
-    public virtual string GetFinalGrade()
+    public string GetFinalGrade()
     {
         return $"{_finalGrade}";
     }
 
-    public virtual string GetSubjectDetailsString()
-    {
-        
-        return $"";
-    }
+    public abstract string GetSubjectDetailsString();
+   
 
-    public  virtual string GetSubjectStringRepresentation() 
-    {    
-
-        return $"";
-    }
+    public  abstract string GetSubjectStringRepresentation();
+    
    
 }    

@@ -89,12 +89,6 @@ public  class Person
         _otherNames = myOtherNames;
     }
 
-    public  virtual string GetPersonDetailsString()
-    {
-        
-
-        return $"";
-    }
 
     public  virtual string GetPersonStringRepresentation()
     {    

@@ -110,13 +110,19 @@ public class SchoolManager
 
                     // Create a new student object
                     Student newStudent = new Student(id,personLastName, personFirstName, personOtherNames, personAge, "Enter Later", "Lydia", "Enter Later", "Enter Later", "Enter Later", false);
+                    
+                    //Add a subject
+                    Console.WriteLine("1. Maths or 2. English?: ");
+                    int choice = int.Parse(Console.ReadLine());
 
-                    // Add subjects for the student
-                    for (int i = 0; i < numSubjects; i++)
+                    if (choice == 1)
                     {
-                        Console.Write($"Enter the name of subject {i + 1}: ");
-                        string subjectName = Console.ReadLine();
-                        newStudent.GetSubjects().Add(new Subject(subjectName, "Unknown", 0, 0, 4, 25, 0, "IP"));
+                        newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
+                    }
+
+                    else if (choice == 2)
+                    {
+                        newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
                     }
 
                     // Add the student to the list of persons

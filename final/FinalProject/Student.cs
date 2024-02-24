@@ -52,12 +52,6 @@ public class Student : Person
     }
 
 
-    public override string GetPersonDetailsString()
-    {
-        
-        return "df";
-    }
-
     public override string GetPersonStringRepresentation() 
     {    
         
