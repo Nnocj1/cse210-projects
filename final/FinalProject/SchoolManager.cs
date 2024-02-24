@@ -13,6 +13,7 @@ public class SchoolManager
         _students = students;
         _teachers = teachers;
         _nonTeachingStaff = nonTeachingStaff;
+
     }
 
     public void Start()
@@ -81,12 +82,14 @@ public class SchoolManager
 
     public void ListPersonDetails()
     {
+        Console.WriteLine("These are all the members of the school:\n");
         int index = 1;
         foreach (Person person in _persons)
         {
             Console.WriteLine($" {index}. {person.GetPersonDetailsString()}");
             index++;
         }
+        Console.WriteLine(" ");
     }
     
     public void CreatePerson()
@@ -166,7 +169,7 @@ public class SchoolManager
             Console.WriteLine("You entered an Invalid number.");
             }
     }
-                
+
     public void SavePeople()
     {   
         Console.WriteLine("What is the name of the file to save your goals?:");
@@ -258,13 +261,15 @@ public class SchoolManager
                         if (determineSubjectType.Length == 2)
                             {
                                 MathsSubject mathsSubject = new MathsSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                                _subjects.Add(mathsSubject);
                                 student.GetSubjects().Add(mathsSubject);
                             }
 
                         else if (determineSubjectType.Length == 3)
                             {
-                                EnglishSubject mathsSubject = new EnglishSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
-                                student.GetSubjects().Add(mathsSubject);
+                                EnglishSubject englishSubject = new EnglishSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                                _subjects.Add(englishSubject);
+                                student.GetSubjects().Add(englishSubject);
                             }
 
                         i += index;    
@@ -303,7 +308,7 @@ public class SchoolManager
                     }
                 }
             }
-            Console.WriteLine("Goals has been loaded successfully!\n");          
+            Console.WriteLine("Everyone is in!\n");          
         }
     }
 }
