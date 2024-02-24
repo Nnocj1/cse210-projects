@@ -137,7 +137,7 @@ public class SchoolManager
 
                         else if (choice == 2)
                         {
-                            newStudent.GetSubjects().Add(new MathsSubject(0, 0, 4, 25, 0, "IP"));
+                            newStudent.GetSubjects().Add(new EnglishSubject(0, 0, 4, 25, 0, "IP"));
                         }
                     }
 

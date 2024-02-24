@@ -44,6 +44,11 @@ public class Student : Person
     {
         return $"{GetOfficialName()} : ID - {GetId()}";
     }
+    
+    public override string GetPersonFullDetails()
+    {
+        return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";
+    }
     public override string GetPersonStringRepresentation() 
     {    
         string allSubjects ="";

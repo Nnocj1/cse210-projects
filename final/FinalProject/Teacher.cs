@@ -13,7 +13,11 @@ public class Teacher : Person
     {
         return $"{GetOfficialName()} : ID - {GetId()} : Teaching Subject - {_teachingSubject}";
     }
-
+    
+    public override string GetPersonFullDetails()
+    {
+        return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";
+    }
     public override string GetPersonStringRepresentation() 
     {    
         
