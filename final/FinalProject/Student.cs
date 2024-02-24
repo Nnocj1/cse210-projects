@@ -55,7 +55,7 @@ public class Student : Person
         {
             allSubjects = allSubjects + subject.GetSubjectStringRepresentation();
         }
-        return $"{GetPersonFullDetails()} : {allSubjects}";
+        return $"{GetPersonFullDetails()} : {allSubjects} % 1";
     }
 
 }    
