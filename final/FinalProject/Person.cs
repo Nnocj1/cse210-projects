@@ -2,17 +2,17 @@ using System;
 
 public  class Person
 {
-    private string _sirName;
-    private string _firstName;
-    private string _otherNames;
-    private int _age;  
-    private string _mobileContact;
-    private string _motherName;
-    private string _fatherName;
-    private string _houseLine;
-    private string _houseAddress;
-    private bool _married;
-    private string _id;
+    protected string _sirName;
+    protected string _firstName;
+    protected string _otherNames;
+    protected int _age;  
+    protected string _mobileContact;
+    protected string _motherName;
+    protected string _fatherName;
+    protected string _houseLine;
+    protected string _houseAddress;
+    protected bool _married;
+    protected string _id;
 
 
     public Person(string id, string sirName, string firstName, string otherNames, int age, string mobileContact, string motherName, string fatherName, string houseLine, string houseAddress, bool married)
@@ -98,6 +98,11 @@ public  class Person
     {    
         
         return "";
+    }
+
+    public string GetPersonFullDetails()
+    {
+        return $"{_id},{_sirName},{_firstName},{_otherNames},{_age},{_mobileContact}, {_motherName},{_fatherName},{_houseLine},{_houseAddress},{_married}";
     }
 
 }

@@ -17,7 +17,7 @@ public class Teacher : Person
     public override string GetPersonStringRepresentation() 
     {    
         
-        return "fg";
+        return "{}";
     }
 
 }
