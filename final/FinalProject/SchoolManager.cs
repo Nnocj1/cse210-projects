@@ -225,6 +225,15 @@ public class SchoolManager
                 //Detailed personal info.
                 string[] personalFullDetails = line.Split(",");
                 
+                //details of students for subjects.
+                string roleInfo = personalRoleInfo[1];
+                string[] studentSubjectInfo = roleInfo.Split("-");
+
+
+
+                
+
+                
 
                 if (personTypeInfo.Length == 2)
                 {
@@ -239,8 +248,37 @@ public class SchoolManager
                     string houseLine = personalFullDetails[8];
                     string houseAddress = personalFullDetails[9];
                     bool married = bool.Parse(personalFullDetails[10]);
-                    Student student = new Student(id,sirName,firstName,otherNames,age,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
-                }
+
+                    if (studentSubjectInfo.Length >= 1)
+                    {
+                        foreach (string parts in  studentSubjectInfo)
+                        {
+                            string subjectInfo = studentSubjectInfo[0];
+                            string[] subjectParts = subjectInfo.Split(",");
+                            string subjectName = subjectParts[0];
+                            string subjectTeacher = subjectParts[1];
+                            int totalClassTestScore = int.Parse(subjectParts[2]);
+                            int totalExamsScore = int.Parse(subjectParts[3]);
+                            int expectedNumberOfClassTests = int.Parse(subjectParts[4]);
+                            int marksForEachTest = int.Parse(subjectParts[5]);
+                            int numberOfCompletedClassTests = int.Parse(subjectParts[6]);
+                            string finalGrade = subjectParts[7];
+                            
+                            //checking the type of subject.
+                            string[] determineSubjectType = subjectInfo.Split("|");
+                            if (determineSubjectType.Length == 2)
+                            {
+                                MathsSubject mathsSubject = new MathsSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                            }
+
+                            else if (determineSubjectType.Length == 3)
+                            {
+                                MathsSubject mathsSubject = new MathsSubject(totalClassTestScore, totalExamsScore,expectedNumberOfClassTests, marksForEachTest,numberOfCompletedClassTests, finalGrade);
+                            }
+                        }
+                    }
+                        Student student = new Student(id,sirName,firstName,otherNames,age,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
+                    }
 
                 else if (personTypeInfo.Length == 3 || personTypeInfo.Length == 4)
                 {
