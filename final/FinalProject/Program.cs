@@ -8,7 +8,10 @@ well as not reaching full potential. What if teachers can keep a digital lesson 
 maintain, or a system where calculations for student reports are automatically generated?.. We begin to see the benefits.
 
 Program Function: This program is to demonstrate some of the conditional logics that could exist in the 
-Software Application of a school.*/
+Software Application of a school.
+
+Meeting Assignment Requirement: This quite a long program that applies abstraction, encapsulation
+,inheritance and polymorphism.*/
 
 class Program
 {
