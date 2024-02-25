@@ -24,8 +24,7 @@ class Program
             SchoolManager schoolManager = new SchoolManager(persons);
 
             schoolManager.Start();
-            
-        
+                    
         }
     }    
 }
