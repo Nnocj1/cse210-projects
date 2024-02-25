@@ -28,6 +28,6 @@ public class MathsSubject: Subject
 
     public  override string GetSubjectStringRepresentation() 
     {    
-        return $"-{_subjectName},{_subjectTeacher},{_totalClassTestScore},{_totalExamsScore},{_expectedNumberOfClassTests},{_marksForEachTest},{_numberOfCompletedClassTests},{_finalGrade}, | 1";
+        return $"@@{_subjectName},{_subjectTeacher},{_totalClassTestScore},{_totalExamsScore},{_expectedNumberOfClassTests},{_marksForEachTest},{_numberOfCompletedClassTests},{_finalGrade}, | 1";
     }   
 }    

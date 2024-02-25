@@ -16,9 +16,9 @@ public class SchoolManager
         while (true)
         {             
             //Menu Options
-            Console.WriteLine("Menu Options:");
+            Console.WriteLine("\nMenu Options:");
             Console.WriteLine(" 1. Create New Person\n 2. View All School Members. \n 3. View all Students. \n 4. View all Teachers. \n 5. View All Non-Teaching Staff.\n 6. Save People.\n 7. Load People.\n 8. Manage Student Record \n 9. Quit.");
-            Console.Write("Select a choice from the menu: ");
+            Console.Write("\nSelect a choice from the menu: ");
 
             string userInput = Console.ReadLine();
             int choice = int.Parse(userInput);
@@ -72,10 +72,10 @@ public class SchoolManager
     
     public void ManageStudentRecords()
     {   
-        Console.WriteLine("Which action do you want to take?: ");
-        Console.WriteLine("1. Update Student Info\n2. Enter Student Scores\n3. Display Student ReportCard");
+        Console.WriteLine("\nWhich action do you want to take?: ");
+        Console.Write("\n1. Update Student Info\n2. Enter Student Scores\n3. Display Student ReportCard: ");
         int choice = int.Parse(Console.ReadLine());
-        Console.Write("Enter the Student's ID: ");
+        Console.Write("\nEnter the Student's ID: ");
         string studentId = Console.ReadLine();
 
         foreach (Student student in _persons.OfType<Student>())
@@ -97,13 +97,13 @@ public class SchoolManager
                 return; // After finding the student, return. Don't search further.
             }
         }
-        Console.WriteLine("Student not found!");
+        Console.WriteLine("\nStudent not found!");
     }
 
     public void UpdateStudentInfo(Student student)
     {
-        Console.WriteLine("Select the type of information to Update: ");
-        Console.WriteLine("1. First name\n2. Sir name\n3. OtherNames\n4. Mobile contact\n5. Mother name\n6. Father name\n7. House Line\n8. House address.\n9. Marriage.");
+        Console.WriteLine("\nSelect the type of information to Update: ");
+        Console.Write("\n1. First name\n2. Sir name\n3. OtherNames\n4. Mobile contact\n5. Mother name\n6. Father name\n7. House Line\n8. House address.\n9. Marriage: ");
         int updateChoice = int.Parse(Console.ReadLine());
 
         
@@ -154,41 +154,54 @@ public class SchoolManager
 
         else
         {
-            Console.Write("Invalid Input");
+            Console.Write("\nInvalid Input");
         }
     }
 
     public void EnterStudentScores(Student student)
     {
-        Console.WriteLine("1. Record student class Test\n2. Record Student Final Exams");
+        Console.Write("\n1. Record student class Test\n2. Record Student Final Exams: ");
         int testExams = int.Parse(Console.ReadLine());
 
         if (testExams == 1)
         {
-            Console.WriteLine("1. Maths \n2.English: ");
+            Console.Write("\n1. Maths \n2. English: ");
             int  subjectChoice = int.Parse(Console.ReadLine());
             if (subjectChoice == 1)
-            {  
-                foreach (Subject subject in student.GetSubjects())
+            {   
+                Console.Write("\nHow many Test? 1 - 4: ");
+                int responds = int.Parse(Console.ReadLine());
+                int index = 1;
+                for (int i = 0; i < responds;)
                 {
-                    if (subject is MathsSubject)
+                    foreach (Subject subject in student.GetSubjects())
                     {
-                        subject.RecordClassTest();
-                        subject.UpdateFinalGrade();
+                        if (subject is MathsSubject)
+                        {
+                            subject.RecordClassTest();
+                            subject.UpdateFinalGrade();
+                        }
                     }
-                }                
+                    i += index;
+                }                    
             }
-            else if (subjectChoice == 3)
+            else if (subjectChoice == 2)
             {  
-                foreach (Subject subject in student.GetSubjects())
+                Console.Write("\nHow many Test? 1 - 4: ");
+                int responds = int.Parse(Console.ReadLine());
+                int index = 1;
+                for (int i = 0; i < responds;)
                 {
-                    if (subject is EnglishSubject)
+                    foreach (Subject subject in student.GetSubjects())
                     {
-                        subject.RecordClassTest();
-                        subject.UpdateFinalGrade();
+                        if (subject is EnglishSubject)
+                        {
+                            subject.RecordClassTest();
+                            subject.UpdateFinalGrade();
+                        }
                     }
+                    i += index;
                 }
-                
             }
 
             else
@@ -198,7 +211,7 @@ public class SchoolManager
         }
         else if (testExams == 2)
         {
-            Console.WriteLine("1. Maths \n2.English: ");
+            Console.Write("\n1. Maths \n2. English: ");
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {  
@@ -272,7 +285,7 @@ public class SchoolManager
 
     public void ListPersonDetails()
     {
-        Console.WriteLine("These are all the members of the school:\n");
+        Console.WriteLine("\nThese are all the members of the school:\n");
         int index = 1;
         foreach (Person person in _persons.OfType<Person>())
         {
@@ -284,34 +297,34 @@ public class SchoolManager
     
     public void CreatePerson()
     {
-        Console.WriteLine("The school is made of three types of Persons:");
-        Console.WriteLine(" 1. Student.\n 2. Teacher.\n 3. Non - Teaching Staff.");
-        Console.Write("What type of Person would you like to create?: ");
+        Console.WriteLine("\nThe school is made of three types of Persons:");
+        Console.WriteLine("\n 1. Student.\n 2. Teacher.\n 3. Non - Teaching Staff.");
+        Console.Write("\nWhat type of Person would you like to create?: ");
         string userPerson = Console.ReadLine();
         int person = int.Parse(userPerson);        
 
             if (person <= 3)
             {   
-                Console.Write("What is the person's Sir name?: ");
+                Console.Write("\nWhat is the person's Sir name?: ");
                 string personLastName = Console.ReadLine();
 
-                Console.Write("First name?: ");
+                Console.Write("\nFirst name?: ");
                 string personFirstName = Console.ReadLine();
 
-                Console.Write("Other name/s?: ");
+                Console.Write("\nOther name/s?: ");
                 string personOtherNames = Console.ReadLine();
 
-                Console.Write("ID: ");
+                Console.Write("\nID: ");
                 string id = Console.ReadLine();
 
-                Console.Write("Age?: ");
+                Console.Write("\nAge?: ");
                 string age= Console.ReadLine();
                 int personAge = int.Parse(age);
                 
                 if (person == 1)
                 {
                     // Prompt for additional information related to student
-                    Console.WriteLine("Enter the number of subjects the student is studying:");
+                    Console.Write("\nEnter the number of subjects the student is studying: ");
                     int numSubjects = int.Parse(Console.ReadLine());
 
                     // Create a new student object
@@ -320,7 +333,7 @@ public class SchoolManager
                     //Add a subject
                     for (int i = 0; i < numSubjects; i++)
                     {
-                        Console.Write($"1. Maths or 2. English?: {i + 1}: ");
+                        Console.Write($"\n1. Maths or 2. English?: {i + 1}: ");
                         int choice = int.Parse(Console.ReadLine());
                         if (choice == 1)
                         {
@@ -339,7 +352,7 @@ public class SchoolManager
 
                 else if (person == 2)
                 {
-                    Console.Write("What subject do you teach?: ");
+                    Console.Write("\nWhat subject do you teach?: ");
                     string teachingSubject = Console.ReadLine();
                     Teacher newTeacher = new Teacher(id,personLastName, personFirstName, personOtherNames, personAge, teachingSubject, "Enter Later", "Enter Later", "Enter Later", "Enter Later", "Enter Later", false);
                     _persons.Add(newTeacher);
@@ -347,7 +360,7 @@ public class SchoolManager
 
                 else if (person == 3)
                 {
-                    Console.Write("What is your role?: ");
+                    Console.Write("\nWhat is your role?: ");
                     string role = Console.ReadLine();
                     NonTeachingStaff newNonTeachingStaff = new NonTeachingStaff(id,personLastName, personFirstName, personOtherNames, personAge, role,"Enter Later", "Enter Later", "Enter Later", "Enter Later", "Enter Later", false);
                     _persons.Add(newNonTeachingStaff);
@@ -356,13 +369,13 @@ public class SchoolManager
 
             else
             {
-            Console.WriteLine("You entered an Invalid number.");
+            Console.WriteLine("\nYou entered an Invalid number.");
             }
     }
 
     public void SavePeople()
     {   
-        Console.WriteLine("What is the name of the file to save your goals?:");
+        Console.Write("\nWhat is the name of the file to save people info?: ");
         string fileName = Console.ReadLine();
         
         using (StreamWriter outputFile = new StreamWriter(fileName))
@@ -374,7 +387,7 @@ public class SchoolManager
                 outputFile.WriteLine($"{person.GetPersonStringRepresentation()}");
                 
             }
-            Console.WriteLine("Saved!\n");
+            Console.WriteLine("\nSaved!\n");
         }
     }
 
@@ -389,7 +402,7 @@ public class SchoolManager
 
     public void LoadPeople()// there are different ways to achieve this.  either say while not end of stream, or use a foreach loop.
     {
-        Console.WriteLine("What is the filename of your people file?:");
+        Console.Write("\nEnter a filename to load from: ");
         string fileName = Console.ReadLine();
 
         if (File.Exists(fileName))
@@ -409,7 +422,7 @@ public class SchoolManager
                 
                 //details of students for subjects.
                 string roleInfo = personalRoleInfo[1];
-                string[] studentSubjectInfo = roleInfo.Split("-");
+                string[] studentSubjectInfo = roleInfo.Split("@@");
                 int subjectNumber = studentSubjectInfo.Length;
             
 
@@ -496,7 +509,7 @@ public class SchoolManager
                     }
                 }
             }
-            Console.WriteLine("Everyone is in!\n");          
+            Console.WriteLine("\nEveryone is in!\n");          
         }
     }
 }

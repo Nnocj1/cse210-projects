@@ -25,8 +25,8 @@ public class Student : Person
         Console.WriteLine("                         LDS COMMUNITY SCHOOL ACADEMY                 \n");
         Console.WriteLine("                               Terminal Report                   ");
         Console.WriteLine($"{GetOfficialName()}............................................Term 1");
-        Console.WriteLine("----------------------------------------------------------------------");
-        Console.WriteLine("    Subject    |     Class Test     |      Total Score     |      Grade     |");
+        Console.WriteLine("---------------------------------------------------------------------------");
+        Console.WriteLine("    Subject    |     Class Test     |      Exams Score     |      Grade     |");
 
         int index = 1;
         foreach (Subject subject in _subjects)
@@ -35,7 +35,7 @@ public class Student : Person
             index++;
         } 
 
-        Console.WriteLine("----------------------------------------------------------------------");
+        Console.WriteLine("---------------------------------------------------------------------------");
 
     }
 

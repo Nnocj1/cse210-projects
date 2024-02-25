@@ -68,63 +68,63 @@ public  class Person
    
     public void SetFirstName()
     {   
-        Console.WriteLine("What is your first name?:");
+        Console.Write("\nWhat is your first name?: ");
         string myFirstName = Console.ReadLine();
         _firstName = myFirstName;
     }
 
     public void SetLastName()
     {   
-        Console.WriteLine("What is your first name?:");
+        Console.Write("\nWhat is your Last name?: ");
         string myFirstName = Console.ReadLine();
         _firstName = myFirstName;
     }
 
     public void SetOtherNames()
     {   
-        Console.WriteLine("What is your first name?:");
+        Console.Write("\nWhat is your other name/s?: ");
         string myOtherNames = Console.ReadLine();
         _otherNames = myOtherNames;
     }
 
     public void SetMobileContact()
     {
-        Console.WriteLine("Enter Phone number: ");
+        Console.Write("\nEnter Phone number: ");
         string contact = Console.ReadLine();
         _mobileContact = contact;
     }
 
     public void SetHouseAddress()
     {
-        Console.WriteLine("Enter House Address");
+        Console.Write("\nEnter House Address: ");
         string residence = Console.ReadLine();
         _houseAddress = residence;
     }
 
     public void SetHouseLine()
     {   
-        Console.WriteLine("What is your House Line?:");
+        Console.Write("\nWhat is your House Line?: ");
         string line = Console.ReadLine();
         _houseLine = line;
     }
 
     public void SetFatherName()
     {   
-        Console.WriteLine("What is your father's name?:");
+        Console.Write("\nWhat is your father's name?: ");
         string fatherName = Console.ReadLine();
         _fatherName = fatherName;
     }
 
     public void SetMotherName()
     {   
-        Console.WriteLine("What is your mother's name?:");
+        Console.WriteLine("\nWhat is your mother's name?: ");
         string motherName = Console.ReadLine();
         _motherName = motherName;
     }
 
     public void SetMarriage()
     {   
-        Console.WriteLine("Are you married 1. Yes 2. No?:");
+        Console.WriteLine("\nAre you married 1. Yes 2. No?: ");
         int married = int.Parse(Console.ReadLine());
         if (married == 1)
         {

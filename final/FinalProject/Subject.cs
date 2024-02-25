@@ -26,7 +26,7 @@ public abstract class Subject
 
     public void RecordClassTest()
     {
-        Console.WriteLine("Enter the score: (out of 25)");
+        Console.Write("\nEnter the score (out of 25): ");
         int score = int.Parse(Console.ReadLine());
         _totalClassTestScore += score;
         _numberOfCompletedClassTests++;
@@ -44,7 +44,7 @@ public abstract class Subject
 
     public void RecordExamScore()
     {
-        Console.WriteLine("New Exams score?: ");
+        Console.Write("\nNew Exams score?: ");
         string responds = Console.ReadLine();
         int examsScore = int.Parse(responds);
 
@@ -52,11 +52,11 @@ public abstract class Subject
     }
     public void UpdateFinalGrade()
     {
-        int totalPercent = (_totalClassTestScore/(_expectedNumberOfClassTests * _marksForEachTest) * 50) + _totalExamsScore/2;
+        int totalPercent = _totalClassTestScore/2 + _totalExamsScore/2;
 
         if ( totalPercent>= 93)
         {
-            _finalGrade = "A+";
+            _finalGrade = "A";
         }
 
         else if (totalPercent < 93 && totalPercent > 89 )
