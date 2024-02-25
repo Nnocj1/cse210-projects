@@ -26,8 +26,9 @@ public abstract class Subject
 
     public void RecordClassTest()
     {
-      
-        _totalClassTestScore += _marksForEachTest;
+        Console.WriteLine("Enter the score: (out of 25)");
+        int score = int.Parse(Console.ReadLine());
+        _totalClassTestScore += score;
         _numberOfCompletedClassTests++;
     }
     

@@ -80,11 +80,25 @@ public  class Person
         _firstName = myFirstName;
     }
 
-    public void setOtherNames()
+    public void SetOtherNames()
     {   
         Console.WriteLine("What is your first name?:");
         string myOtherNames = Console.ReadLine();
         _otherNames = myOtherNames;
+    }
+
+    public void SetMobileContact()
+    {
+        Console.WriteLine("Enter Phone number: ");
+        string contact = Console.ReadLine();
+        _mobileContact = contact;
+    }
+
+    public void SetHouseAddress()
+    {
+        Console.WriteLine("Enter House Address");
+        string residence = Console.ReadLine();
+        _houseAddress = residence;
     }
 
     public virtual string GetPersonDetailsString()

@@ -4,15 +4,10 @@ using System.IO;
 public class SchoolManager
 {
     private List<Person> _persons = new List<Person>();
-    private List<Student> _students = new List<Student>();
-    private List<Teacher> _teachers =  new List<Teacher>();
-    private List<NonTeachingStaff> _nonTeachingStaff = new List<NonTeachingStaff>();
-    public SchoolManager(List<Person> persons,List<Student>students,List<Teacher> teachers,List<NonTeachingStaff> nonTeachingStaff)
+
+    public SchoolManager(List<Person> persons)
     {
         _persons = persons;
-        _students = students;
-        _teachers = teachers;
-        _nonTeachingStaff = nonTeachingStaff;
 
     }
 
@@ -22,7 +17,7 @@ public class SchoolManager
         {             
             //Menu Options
             Console.WriteLine("Menu Options:");
-            Console.WriteLine(" 1. Create New Person\n 2. List People.\n 3. Save People.\n 4. Load People.\n 5. Quit.");
+            Console.WriteLine(" 1. Create New Person\n 2. View All School Members. \n 3. View all Students. \n 4. View all Teachers. \n 5. View All Non-Teaching Staff.\n 6. Save People.\n 7. Load People.\n 8. Manage Student Record \n 9. Quit.");
             Console.Write("Select a choice from the menu: ");
 
             string userInput = Console.ReadLine();
@@ -36,55 +31,224 @@ public class SchoolManager
 
             else if (choice == 2)
             {
-                ListPersonDetails();/// just to let's say view all information about a teacher
+                ListPersonDetails();/// just to let's say view all information about all school members
             }
 
             else if (choice == 3)
             {
-                SavePeople();
+                ListStudentNames();
             }
 
             else if (choice == 4)
             {
+                ListTeacherNames();
+            }
+
+            else if (choice == 5)
+            {
+                ListNonTeachingStaffNames();
+            }
+            else if (choice == 6)
+            {
+                SavePeople();
+            }
+
+            else if (choice == 7)
+            {
                 LoadPeople();
             }
 
-            // else if (choice == 5)
-            // {
-            //     RecordStudentExams();
-            // }
+            else if (choice == 8)
+            {
+                ManageStudentRecords();
+            }
 
-            // else if (choice == 6)
-            // {
-            //     RecordStudentTest();
-            // }
-
-            // else if (choice == 7)
-            // {
-            //     DisplayStudentSubject();
-            // }
-
-            else if (choice == 5)
+            else if (choice == 9)
             {
                 break;
             }
         }
     }
+    
+    public void ManageStudentRecords()
+    {   
+        Console.WriteLine("Which action do you want to take?: ");
+        Console.WriteLine("1. Update Student Info\n2. Enter Student Scores\n3. Display Student ReportCard");
+        int choice = int.Parse(Console.ReadLine());
+        Console.Write("Enter the Student's ID: ");
+        string studentId = Console.ReadLine();
+
+        foreach (Student student in _persons.OfType<Student>())
+        {
+            if (student.GetId() == studentId)
+            {       
+                if (choice == 1)
+                {
+                    UpdateStudentInfo(student);
+                }
+                else if (choice == 2)
+                {
+                    EnterStudentScores(student);
+                }
+                else if (choice == 3)
+                {
+                    student.DisplayStudentReportCard();
+                }
+                return; // After finding the student, return. Don't search further.
+            }
+        }
+        Console.WriteLine("Student not found!");
+    }
+
+    public void UpdateStudentInfo(Student student)
+    {
+        Console.WriteLine("Select the type of information to Update: ");
+        Console.WriteLine("1. First name\n2. Sir name\n3. OtherNames\n4. Mobile contact\n5. House address.");
+        int updateChoice = int.Parse(Console.ReadLine());
+
+        
+        if (updateChoice == 1)
+            {    
+            student.SetFirstName();
+            }
+
+        else if (updateChoice == 2)
+        {   
+            student.SetLastName();
+        }      
+        
+        else if (updateChoice ==  3)
+        {   
+            student.SetOtherNames();
+        }
+
+        else if (updateChoice == 4)
+        {
+            student.SetMobileContact(); 
+        }
+
+        else if (updateChoice == 5)
+        {
+            student.SetHouseAddress();
+        }
+
+        else
+        {
+            Console.Write("Invalid Input");
+        }
+    }
+
+    public void EnterStudentScores(Student student)
+    {
+        Console.WriteLine("1. Record student class Test\n2. Record Student Final Exams");
+        int testExams = int.Parse(Console.ReadLine());
+
+        if (testExams == 1)
+        {
+            Console.WriteLine("1. Maths \n2.English: ");
+            int  subjectChoice = int.Parse(Console.ReadLine());
+            if (subjectChoice == 1)
+            {  
+                foreach (MathsSubject subject in student.GetSubjects())
+                {
+                    {
+                        subject.RecordClassTest();   
+                    }
+                }
+                
+            }
+
+            else if (subjectChoice ==2)
+            {
+                foreach (EnglishSubject subject in student.GetSubjects())
+                {
+                    {
+                        subject.RecordClassTest();   
+                    }
+                }
+            }
+
+            else
+            {
+                Console.WriteLine($"Subject not found!");
+            }
+        }
+        else if (testExams == 2)
+        {
+            Console.WriteLine("1. Maths \n2.English: ");
+            int choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
+            {  
+                foreach (MathsSubject subject in student.GetSubjects())
+                {
+                    {
+                        subject.RecordExamScore();   
+                    }
+                }
+                
+            }
+
+            else if (choice == 2)
+            {
+                foreach (EnglishSubject subject in student.GetSubjects())
+                {
+                    {
+                        subject.RecordExamScore();   
+                    }
+                }
+            }
+        }    
+    }
+
 
     public void ListPersonNames()
     {   
         int index = 1;
-        foreach (Person person in _persons)
+        foreach (Person person in _persons.OfType<Person>())
         {
             Console.WriteLine($"{index}. {person.GetOfficialName()}");
         }
+        Console.WriteLine(" ");
+    }
+    public void ListStudentNames()
+    {   
+        int index = 1;
+        foreach(Student student in _persons.OfType<Student>())
+        {
+            Console.WriteLine($"{index}. {student.GetOfficialName()}");
+            index++;
+        }
+        Console.WriteLine(" ");
+    }
+
+    public void ListTeacherNames()
+    {   int index = 1;
+        foreach(Teacher teacher in _persons.OfType<Teacher>())
+        {   
+            
+            Console.WriteLine($"{index}. {teacher.GetOfficialName()}");
+            index++;
+        }
+        Console.WriteLine(" ");
+    }
+
+    
+    public void ListNonTeachingStaffNames()
+    {   
+        int index = 1;
+        foreach (NonTeachingStaff person in _persons.OfType<NonTeachingStaff>())
+        {
+            Console.WriteLine($"{index}. {person.GetOfficialName()}");
+            index++;
+        }
+        Console.WriteLine(" ");
     }
 
     public void ListPersonDetails()
     {
         Console.WriteLine("These are all the members of the school:\n");
         int index = 1;
-        foreach (Person person in _persons)
+        foreach (Person person in _persons.OfType<Person>())
         {
             Console.WriteLine($" {index}. {person.GetPersonDetailsString()}");
             index++;
@@ -239,7 +403,7 @@ public class SchoolManager
 
                     Student student = new Student(id,sirName,firstName,otherNames,age,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
                     _persons.Add(student);
-                    _students.Add(student);
+                  
                      
                     // this section is to add the subject information to each student.
                     int index = 1;
@@ -295,14 +459,14 @@ public class SchoolManager
                     {
                         Teacher teacher = new Teacher(id,sirName,firstName,otherNames,age, workType,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
                         _persons.Add(teacher);
-                        _teachers.Add(teacher);
+                       
                     }
 
                     else if (personTypeInfo.Length == 4)
                     {
                         NonTeachingStaff nonTeachingStaff = new NonTeachingStaff(id,sirName,firstName,otherNames,age, workType,mobileContact,motherName,fatherName, houseLine, houseAddress,married);
                         _persons.Add(nonTeachingStaff);
-                        _nonTeachingStaff.Add(nonTeachingStaff);
+                       
                     }
                 }
             }
