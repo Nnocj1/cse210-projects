@@ -103,7 +103,7 @@ public class SchoolManager
     public void UpdateStudentInfo(Student student)
     {
         Console.WriteLine("Select the type of information to Update: ");
-        Console.WriteLine("1. First name\n2. Sir name\n3. OtherNames\n4. Mobile contact\n5. Mother name\n6. Father name\n7. House Line\n8. House address.\n Marriage.");
+        Console.WriteLine("1. First name\n2. Sir name\n3. OtherNames\n4. Mobile contact\n5. Mother name\n6. Father name\n7. House Line\n8. House address.\n9. Marriage.");
         int updateChoice = int.Parse(Console.ReadLine());
 
         
@@ -169,34 +169,26 @@ public class SchoolManager
             int  subjectChoice = int.Parse(Console.ReadLine());
             if (subjectChoice == 1)
             {  
-                foreach (MathsSubject subject in student.GetSubjects())
+                foreach (Subject subject in student.GetSubjects())
                 {
                     if (subject is MathsSubject)
                     {
                         subject.RecordClassTest();
+                        subject.UpdateFinalGrade();
                     }
                 }                
             }
-            if (subjectChoice == 3)
+            else if (subjectChoice == 3)
             {  
-                foreach (EnglishSubject subject in student.GetSubjects())
+                foreach (Subject subject in student.GetSubjects())
                 {
                     if (subject is EnglishSubject)
                     {
                         subject.RecordClassTest();
+                        subject.UpdateFinalGrade();
                     }
                 }
                 
-            }
-
-            else if (subjectChoice ==2)
-            {
-                foreach (EnglishSubject subject in student.GetSubjects())
-                {
-                    {
-                        subject.RecordClassTest();   
-                    }
-                }
             }
 
             else
@@ -210,10 +202,11 @@ public class SchoolManager
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {  
-                foreach (MathsSubject subject in student.GetSubjects())
+                foreach (Subject subject in student.GetSubjects())
                 {   if (subject is MathsSubject)
                     {
-                        subject.RecordExamScore();   
+                        subject.RecordExamScore();
+                        subject.UpdateFinalGrade();  
                     }
                 }
                 
@@ -221,11 +214,12 @@ public class SchoolManager
 
             else if (choice == 2)
             {
-                foreach (EnglishSubject subject in student.GetSubjects())
+                foreach (Subject subject in student.GetSubjects())
                 {   
                     if (subject is EnglishSubject)
                     {
-                        subject.RecordExamScore();   
+                        subject.RecordExamScore();
+                        subject.UpdateFinalGrade(); 
                     }
                 }
             }
