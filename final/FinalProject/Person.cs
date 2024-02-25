@@ -101,6 +101,43 @@ public  class Person
         _houseAddress = residence;
     }
 
+    public void SetHouseLine()
+    {   
+        Console.WriteLine("What is your House Line?:");
+        string line = Console.ReadLine();
+        _houseLine = line;
+    }
+
+    public void SetFatherName()
+    {   
+        Console.WriteLine("What is your father's name?:");
+        string fatherName = Console.ReadLine();
+        _fatherName = fatherName;
+    }
+
+    public void SetMotherName()
+    {   
+        Console.WriteLine("What is your mother's name?:");
+        string motherName = Console.ReadLine();
+        _motherName = motherName;
+    }
+
+    public void SetMarriage()
+    {   
+        Console.WriteLine("Are you married 1. Yes 2. No?:");
+        int married = int.Parse(Console.ReadLine());
+        if (married == 1)
+        {
+            _married = true;
+        }
+
+        else if (married == 2)
+        {
+            _married = false;
+        }
+        
+    }
+
     public virtual string GetPersonDetailsString()
     {
         return "";
